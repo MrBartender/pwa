@@ -1,0 +1,25 @@
+.previewContentCard {
+  background-color: rgba(52, 61, 94) !important;
+  box-shadow: 0 .46875rem 2.1875rem rgb(34, 44, 78),
+              0 .9375rem 1.40625rem rgb(34, 44, 78),
+              0 .25rem .53125rem rgb(34, 44, 78),
+              0 .125rem .1875rem rgb(34, 44, 78);
+  width: 100%;
+}
+
+.horizontalPreviewContent {
+  padding-top: 100px !important;
+}
+
+.recipeName {
+  color: #FFF !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.recipeIngredients {
+  margin-bottom: 0.9rem !important;
+}
+
+.price {
+  float: right;
+}

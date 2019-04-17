@@ -1,0 +1,9 @@
+.recipePreviewCard {
+  position: relative;
+  list-style: none;
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 12.5px;
+  margin: 0;
+  width: 450px;
+}

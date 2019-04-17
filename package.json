@@ -1,0 +1,43 @@
+{
+  "name": "mrbartender-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-amplify": "^1.1.26",
+    "aws-amplify-react": "^2.3.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-ratings-declarative": "^3.4.1",
+    "react-scripts": "2.1.8",
+    "shards-react": "^1.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "rebuild-api": "amplify api gql-compile",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@storybook/addon-actions": "^5.0.9",
+    "@storybook/addon-backgrounds": "^5.0.9",
+    "@storybook/addon-knobs": "^5.0.9",
+    "@storybook/addon-links": "^5.0.9",
+    "@storybook/addon-viewport": "^5.0.9",
+    "@storybook/addons": "^5.0.9",
+    "@storybook/react": "^5.0.9",
+    "babel-loader": "^8.0.5"
+  }
+}
