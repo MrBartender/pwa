@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "mrbartender",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitouserpool",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
