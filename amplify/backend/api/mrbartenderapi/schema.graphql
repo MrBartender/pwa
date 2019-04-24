@@ -234,5 +234,5 @@ enum OrderStatus
 }
 
 type Query {
-  getUserByUsername($username: String!): User
+  getUserByUsername(username: String!): User
 }
