@@ -82,6 +82,7 @@ type Recipe @model @searchable
   price: Int!
   description: String
   instructions: String
+  glassType: String
   profilePic: ProfilePic!
   components: [Component!]!
   reviews: [Rating!]! @connection(name: "RecipeReviews")
@@ -230,4 +231,8 @@ enum OrderStatus
   cancelled
   refund_requested
   refunded
+}
+
+type Query {
+  getUserByUsername($username: String!): User
 }
