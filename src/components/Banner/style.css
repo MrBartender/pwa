@@ -1,0 +1,21 @@
+.bannerImageContainer {
+  width: 85%;
+  position: relative;
+  margin-bottom: -60px;
+  top: 0;
+  left: 7.5%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  z-index: 1000;
+  box-shadow: 0 .2rem 1rem rgb(24, 36, 75),
+              0 .5rem .4rem rgb(24, 36, 75),
+              0 .2rem .1rem rgb(24, 36, 75),
+              0 .05rem .3rem rgb(24, 36, 75) !important;
+}
+
+.bannerImage {
+  width: 100%;
+  top: 0;
+  left: 0;
+}

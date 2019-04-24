@@ -1,0 +1,16 @@
+.featuredCollection {
+  padding: 0 2rem;
+}
+
+.featuredCollection > ul {
+  padding: 0;
+}
+
+li:first-child {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.featuredTitle {
+  color: white;
+}

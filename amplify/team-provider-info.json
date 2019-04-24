@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "mrbartender-20190414034221-authRole",
+            "UnauthRoleArn": "arn:aws:iam::996076014670:role/mrbartender-20190414034221-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::996076014670:role/mrbartender-20190414034221-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "mrbartender-20190414034221-deployment",
+            "UnauthRoleName": "mrbartender-20190414034221-unauthRole",
+            "StackName": "mrbartender-20190414034221",
+            "StackId": "arn:aws:cloudformation:us-east-1:996076014670:stack/mrbartender-20190414034221/339a7460-5e91-11e9-9925-128a65397f5a"
+        },
+        "categories": {
+            "auth": {
+                "mrbartendercognito": {}
+            }
+        }
+    }
+}
