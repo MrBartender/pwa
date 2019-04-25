@@ -1,5 +1,15 @@
-export const getUserByUsername = `query SearchUsers($username: String!) {
-  searchUser(filter: { username: { match: $username }}) {
+export const getUserByUsername = `query SearchUsers(
+  $filter: SearchableUserFilterInput
+  $sort: SearchableUserSortInput
+  $limit: Int
+  $nextToken: Int
+) {
+  searchUsers(
+    filter: $filter
+    sort: $sort
+    limit: $limit
+    nextToken: $nextToken
+  ) {
     items {
       id
       name

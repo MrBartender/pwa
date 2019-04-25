@@ -67,9 +67,11 @@ type Rating @model
 #
 type Component @model
 {
+  id: ID!
   ingredient: Ingredient! @connection
   product: Product @connection
   ratio: Float!
+  recipe: Recipe! @connection(name: "RecipeComponents")
 }
 
 #####
@@ -83,8 +85,8 @@ type Recipe @model @searchable
   description: String
   instructions: String
   glassType: String
-  images: ProfilePic!
-  components: [Component!]! @connection
+  images: ProfilePic
+  components: [Component!]! @connection(name: "RecipeComponents")
   reviews: [Rating!]! @connection(name: "RecipeReviews")
   orders: [Order!]! @connection(name: "OrderRecipe")
 }

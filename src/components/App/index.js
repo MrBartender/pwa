@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // GraphQL
-import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import Amplify, { Auth, API, graphqlOperation } from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
 import { getUserByUsername, createUser } from './graphql';
@@ -9,12 +9,10 @@ import { getUserByUsername, createUser } from './graphql';
 // Components
 import CreateUserDetails from '../CreateUserDetails';
 import Navigation from '../Navigation';
-import Discover from '../Discover';
-import { SignOut } from 'aws-amplify-react/dist/Auth';
 
 // App-wide styles
 import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css"
+import "shards-ui/dist/css/shards.min.css";
 import './style.css';
 
 // Initialize the backend framework
@@ -25,13 +23,14 @@ class App extends Component {
     super(props)
     this.state = {}
     this.createUser = this.createUser.bind(this)
+    this.signOut = this.signOut.bind(this)
     this.getUser()
   }
 
   getUser = async () => {
-    const response = await API.graphql(graphqlOperation(getUserByUsername, { input: { username: this.props.authData.username } }))
+    const response = await API.graphql(graphqlOperation(getUserByUsername, { filter: { username: { eq: this.props.authData.username } } }))
     this.setState({
-      user: response.data.getUserByUsername
+      user: response.data.searchUsers.items[0]
     })
   }
 
@@ -40,6 +39,10 @@ class App extends Component {
     this.setState({
       user: response.data.createUser
     })
+  }
+
+  signOut = async (event) => {
+    return await Auth.signOut()
   }
 
   render() {
@@ -55,12 +58,7 @@ class App extends Component {
     }
     
     // User is fully logged in
-    return (
-      <div>
-        <Navigation user={this.state.user} signOutButton={SignOut} />
-        <Discover user={this.state.user} />
-      </div>
-    );
+    return <Navigation user={this.state.user} signOut={this.signOut} />
   }
 }
 
