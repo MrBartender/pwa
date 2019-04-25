@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // GraphQL
-import Amplify, { Auth, API, graphqlOperation } from 'aws-amplify';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
 import { getUserByUsername, createUser } from './graphql';
@@ -29,16 +29,14 @@ class App extends Component {
   }
 
   getUser = async () => {
-    const cognitoUser = await Auth.currentAuthenticatedUser()
-    const response = await API.graphql(graphqlOperation(getUserByUsername, { input: { username: cognitoUser.username } }))
+    const response = await API.graphql(graphqlOperation(getUserByUsername, { input: { username: this.props.authData.username } }))
     this.setState({
       user: response.data.getUserByUsername
     })
   }
 
   createUser = async (name) => {
-    const cognitoUser = await Auth.currentAuthenticatedUser()
-    const response = await API.graphql(graphqlOperation(createUser, { input: { name, username: cognitoUser.username } }))
+    const response = await API.graphql(graphqlOperation(createUser, { input: { name, username: this.props.authData.username } }))
     this.setState({
       user: response.data.createUser
     })

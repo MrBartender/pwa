@@ -1,7 +1,8 @@
-export const getUserByUsername = `query GetUserByUsername($username: String!) {
-  getUserByUsername(username: $username) {
+export const getUserByUsername = `query GetUserByUsername($input: UserByUsernameInput!) {
+  getUserByUsername(input: $input) {
     id
     name
+    username
   }
 }`
 
