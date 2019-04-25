@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+
+// GraphQL
 import Amplify, { Auth, API, graphqlOperation } from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
 import { getUserByUsername, createUser } from './graphql';
+
+// Components
 import CreateUserDetails from '../CreateUserDetails';
+import Navigation from '../Navigation';
+import Discover from '../Discover';
+import { SignOut } from 'aws-amplify-react/dist/Auth';
 
 // App-wide styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,7 +30,7 @@ class App extends Component {
 
   getUser = async () => {
     const cognitoUser = await Auth.currentAuthenticatedUser()
-    const response = await API.graphql(graphqlOperation(getUserByUsername, { username: cognitoUser.username }))
+    const response = await API.graphql(graphqlOperation(getUserByUsername, { input: { username: cognitoUser.username } }))
     this.setState({
       user: response.data.getUserByUsername
     })
@@ -41,19 +48,24 @@ class App extends Component {
     console.log(this.state.user)
     // Don't render anything while still loading the user
     if (this.state.user === undefined) {
-      return null;
+      return null
     }
 
     // if user has not been created, prompt them to finish it
     if (this.state.user === null) {
-      return <CreateUserDetails onCompleted={this.createUser} />;
+      return <CreateUserDetails onCompleted={this.createUser} />
     }
     
     // User is fully logged in
     return (
-      <h1>Welcome, { this.state.user.name }!</h1>
+      <div>
+        <Navigation user={this.state.user} signOutButton={SignOut} />
+        <Discover user={this.state.user} />
+      </div>
     );
   }
 }
 
-export default withAuthenticator(App, true);
+export default withAuthenticator(App, {
+  includeGreetings: false
+});

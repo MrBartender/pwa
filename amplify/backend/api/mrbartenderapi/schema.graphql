@@ -186,6 +186,7 @@ type User @model
   id: ID!
   name: String!
   username: String!
+  types: [UserType!]!
   currentVendor: Vendor @connection(name: "VendorUsers")
   previousVendors: [Vendor!] @connection
   orders: [Order!]! @connection(name: "UserOrders")
@@ -193,9 +194,21 @@ type User @model
 }
 
 #####
+# What roles a user can have
+#
+enum UserType
+{
+  support
+  vendor
+  host
+  customer
+}
+
+#####
 # Timestamps for an order
 #
-type Timestamps {
+type Timestamps
+{
   ordered: AWSTimestamp
   paid: AWSTimestamp
   poured: AWSTimestamp
@@ -232,6 +245,15 @@ enum OrderStatus
   refunded
 }
 
-type Query {
-  getUserByUsername(username: String!): User @connection
+type Query
+{
+  getUserByUsername(input: UserByUsernameInput!): User
+}
+
+#####
+# Input object to query user by username
+#
+input UserByUsernameInput
+{
+  username: String!
 }
