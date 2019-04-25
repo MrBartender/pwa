@@ -1,8 +1,10 @@
-export const getUserByUsername = `query GetUser($username: String!) {
-  getUser(username: $username) {
-    id
-    name
-    username
+export const getUserByUsername = `query SearchUsers($username: String!) {
+  searchUser(filter: { username: { match: $username }}) {
+    items {
+      id
+      name
+      username
+    }
   }
 }`
 

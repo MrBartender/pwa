@@ -181,7 +181,7 @@ enum DeviceStatus
 #####
 #  User data
 #
-type User @model
+type User @model @searchable
 {
   id: ID!
   name: String!
@@ -243,9 +243,4 @@ enum OrderStatus
   cancelled
   refund_requested
   refunded
-}
-
-type Query
-{
-  getUser(username: String!): User
 }
