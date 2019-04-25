@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Amplify, { Auth, API, graphqlOperation } from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
-import { getUser } from './graphql';
+import { getUserByUsername, createUser } from './graphql';
+import CreateUserDetails from '../CreateUserDetails';
 
 // App-wide styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,20 +14,43 @@ import './style.css';
 Amplify.configure(awsmobile)
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+
+    this.getUser().then(user => {
+      this.setState({ user })
+    })
+  }
+
   getUser = async () => {
     const cognitoUser = await Auth.currentAuthenticatedUser()
-    const dbUser = await API.graphql(graphqlOperation(getUser, { username: cognitoUser.username }))
-    console.log('user:', dbUser)
+    const response = await API.graphql(graphqlOperation(getUserByUsername, { username: cognitoUser.username }))
+
+    return response.data.getUserByUsername
   }
-  
-  componentDidMount() {
-    console.log('App loaded')
-    this.getUser()
+
+  createUser = async (name) => {
+    const cognitoUser = await Auth.currentAuthenticatedUser()
+    const response = await API.graphql(graphqlOperation(createUser, { name, username: cognitoUser.username }))
+    return response.data.createUser
   }
 
   render() {
+    console.log(this.state.user)
+    // Don't render anything while still loading the user
+    if (this.state.user === undefined) {
+      return null;
+    }
+
+    // if user has not been created, prompt them to finish it
+    if (this.state.user === null) {
+      return <CreateUserDetails />;
+    }
+    
+    // User is fully logged in
     return (
-      <h1>Welcome!</h1>
+      <h1>Welcome, { this.state.user.name }!</h1>
     );
   }
 }

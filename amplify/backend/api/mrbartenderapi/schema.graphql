@@ -65,10 +65,10 @@ type Rating @model
 #####
 # Piece of a recipe
 #
-type Component
+type Component @model
 {
-  ingredient: Ingredient!
-  product: Product
+  ingredient: Ingredient! @connection
+  product: Product @connection
   ratio: Float!
 }
 
@@ -83,8 +83,8 @@ type Recipe @model @searchable
   description: String
   instructions: String
   glassType: String
-  profilePic: ProfilePic!
-  components: [Component!]!
+  images: ProfilePic!
+  components: [Component!]! @connection
   reviews: [Rating!]! @connection(name: "RecipeReviews")
   orders: [Order!]! @connection(name: "OrderRecipe")
 }
@@ -142,7 +142,6 @@ type Device @model @searchable
   calibration: Calibration!
   pumps: [Pump!]! @connection
   orders: [Order!]! @connection(name: "DeviceOrders")
-  availableRecipes: Collection! @connection
 }
 
 #####
