@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   getUser = async () => {
-    const response = await API.graphql(graphqlOperation(getUserByUsername, { input: { username: this.props.authData.username } }))
+    const response = await API.graphql(graphqlOperation(getUserByUsername, { username: this.props.authData.username }))
     this.setState({
       user: response.data.getUserByUsername
     })

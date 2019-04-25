@@ -247,13 +247,5 @@ enum OrderStatus
 
 type Query
 {
-  getUserByUsername(input: UserByUsernameInput!): User
-}
-
-#####
-# Input object to query user by username
-#
-input UserByUsernameInput
-{
-  username: String!
+  getUser(username: String!): User
 }
