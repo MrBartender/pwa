@@ -8,6 +8,7 @@ export const listRecipes = `query ListRecipes(
       id
       name
       price
+      description
     }
     nextToken
   }

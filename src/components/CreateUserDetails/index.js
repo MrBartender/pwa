@@ -56,7 +56,7 @@ class CreateUserDetails extends Component {
     let templateName = names[Math.floor(Math.random()*names.length)]
 
     return (
-      <Card style={{ maxWidth: "300px" }}>
+      <Card>
         <CardBody>
           <CardTitle>Finish Setting up</CardTitle>
           <Form onSubmit={this.handleSubmit}>

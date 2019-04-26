@@ -26,6 +26,7 @@ class CreateRecipe extends Component {
     super(props)
     this.state = {
       name: "",
+      description: "",
       ingredients: [],
       selected: [],
       total: 0.0,
@@ -36,6 +37,7 @@ class CreateRecipe extends Component {
     this.handleIngredientsChange = this.handleIngredientsChange.bind(this)
     this.handleRatioChange = this.handleRatioChange.bind(this)
     this.handlePriceChange = this.handlePriceChange.bind(this)
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -48,6 +50,12 @@ class CreateRecipe extends Component {
   handlePriceChange(event) {
     this.setState({
       price: Math.floor(event.target.value)
+    })
+  }
+
+  handleDescriptionChange(event) {
+    this.setState({
+      description: event.target.value
     })
   }
 
@@ -80,7 +88,7 @@ class CreateRecipe extends Component {
         let componentId = await API.graphql(graphqlOperation(createComponent, { input: {
           ratio: ingredient.ratio,
           componentIngredientId: ingredient.id,
-          recipeComponentsId: recipeId
+          componentRecipeId: recipeId
         }}))
         console.log(componentId)
       }
@@ -89,11 +97,11 @@ class CreateRecipe extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(this.state)
 
     const createRecipeBase = await API.graphql(graphqlOperation(createRecipe, { input: {
       name: this.state.name,
-      price: this.state.price
+      price: this.state.price,
+      description: this.state.description
     }}))
     const recipeId = createRecipeBase.data.createRecipe.id
     const components = await this._createComponents(recipeId)
@@ -101,7 +109,7 @@ class CreateRecipe extends Component {
   }
 
   loadIngredients = async () => {
-    const response = await API.graphql(graphqlOperation(listIngredients, {}))
+    const response = await API.graphql(graphqlOperation(listIngredients, { limit: 20 }))
     const ingredients = response.data.listIngredients.items
     
     this.setState({
@@ -127,6 +135,10 @@ class CreateRecipe extends Component {
             <FormGroup>
               <label htmlFor="#price">Price</label>
               <FormInput id="#price" type="number" onChange={this.handlePriceChange} placeholder="Cost in cents (433 = $4.33)" />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="#description">Description</label>
+              <FormInput id="#description" onChange={this.handleDescriptionChange} placeholder="Tasty and fruity but also sharp and alert." />
             </FormGroup>
             <FormGroup>
               <DualListBox

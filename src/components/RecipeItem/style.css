@@ -1,0 +1,25 @@
+.recipeTitle {
+  color: white !important;
+  text-align: center!important;
+  font-size: 2.5rem;
+}
+
+.recipeImage {
+  width: 100%!important;
+}
+.resetRecipe {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 24px;
+  color: white;
+}
+.resetRecipe:hover {
+  cursor: pointer;
+}
+
+.modal-backdrop {
+  background: black!important;
+  opacity: 0.75!important;
+}

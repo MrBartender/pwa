@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RecipePreviewCard from '../RecipePreviewCard';
+import './style.css';
 
 class SearchResults extends Component {
   render() {
@@ -12,7 +13,9 @@ class SearchResults extends Component {
     return (
       <ul>
         {results.map((recipe, index) => (
-          <RecipePreviewCard recipe={recipe} key={index} />
+          <div className="recipeItem" onClick={() => this.props.setRecipe(recipe)} key={index}>
+            <RecipePreviewCard recipe={recipe} />
+          </div>
         ))}
       </ul>
     )

@@ -28,11 +28,18 @@ class App extends Component {
   }
 
   getUser = async () => {
-    const response = await API.graphql(graphqlOperation(getUserByUsername, { filter: { username: { eq: this.props.authData.username } } }))
-    const users = response.data.searchUsers.items
-    this.setState({
-      user: users[0] ? users[0] : null
-    })
+    API.graphql(graphqlOperation(getUserByUsername, { filter: { username: { eq: this.props.authData.username } } }))
+      .then(response => {
+        const users = response.data.searchUsers.items
+        this.setState({
+          user: users[0] ? users[0] : null
+        })
+      })
+      .catch(errors => {
+        this.setState({
+          user: null
+        })
+      })
   }
 
   createUser = async (name) => {
@@ -51,7 +58,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.user)
     // Don't render anything while still loading the user
     if (this.state.user === undefined) {
       return null
@@ -59,7 +65,7 @@ class App extends Component {
 
     // if user has not been created, prompt them to finish it
     if (this.state.user === null) {
-      return <CreateUserDetails onCompleted={this.createUser} />
+      return <div style={{ padding: "1rem 3rem" }}><CreateUserDetails onCompleted={this.createUser} /></div>
     }
     
     // User is fully logged in

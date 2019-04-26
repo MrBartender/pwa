@@ -2,14 +2,28 @@ import React, { Component } from 'react';
 import SearchResults from '../SearchResults';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listRecipes } from './graphql';
+import RecipeItem from '../RecipeItem';
 
 class Discover extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      recipes: []
+      recipes: [],
+      recipe: null
     }
     this.getRecipes()
+    this.setRecipe = this.setRecipe.bind(this)
+    this.resetRecipe = this.resetRecipe.bind(this)
+  }
+
+  resetRecipe() {
+    this.setState({
+      recipe: null
+    })
+  }
+
+  setRecipe(recipe) {
+    this.setState({ recipe })
   }
 
   getRecipes = async () => {
@@ -20,8 +34,14 @@ class Discover extends Component {
   }
 
   render() {
+    if (this.state.recipe === null) {
+      return (
+        <SearchResults results={this.state.recipes} setRecipe={this.setRecipe} />
+      )
+    }
+
     return (
-      <SearchResults results={this.state.recipes} />
+      <RecipeItem recipe={this.state.recipe} reset={this.resetRecipe} />
     )
   }
 }
