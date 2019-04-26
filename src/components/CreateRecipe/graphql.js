@@ -2,7 +2,15 @@ export const createRecipe = `mutation CreateRecipe($input: CreateRecipeInput!) {
   createRecipe(input: $input) {
     id
     name
+    price
+    description
+    instructions
+  }
+}`;
 
+export const createComponent = `mutation CreateComponent($input: CreateComponentInput!) {
+  createComponent(input: $input) {
+    id
   }
 }`
 

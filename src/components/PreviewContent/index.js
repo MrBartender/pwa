@@ -12,6 +12,9 @@ import './style.css';
 class PreviewContent extends Component {
   ingredientNames(components) {
     let nameList = []
+    if (!components) {
+      return ""
+    }
     for (let component of components) {
       nameList.push(component.ingredient.name)
     }

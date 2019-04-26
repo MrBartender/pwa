@@ -16,6 +16,7 @@ import 'react-dual-listbox/lib/react-dual-listbox.css';
 
 import { API, graphqlOperation } from 'aws-amplify';
 import { listIngredients } from './graphql';
+import { createComponent, createRecipe } from './graphql';
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const SliderWithTooltip = createSliderWithTooltip(Slider);
@@ -72,9 +73,31 @@ class CreateRecipe extends Component {
     });
   }
 
-  handleSubmit(event) {
+  _createComponents = async (recipeId) => {
+    for (let ingredient of this.state.ingredients) {
+      if (ingredient.ratio > 0) {
+        // upload the component and save the id?
+        let componentId = await API.graphql(graphqlOperation(createComponent, { input: {
+          ratio: ingredient.ratio,
+          componentIngredientId: ingredient.id,
+          recipeComponentsId: recipeId
+        }}))
+        console.log(componentId)
+      }
+    }
+  }
+
+  handleSubmit = async (event) => {
     event.preventDefault()
     console.log(this.state)
+
+    const createRecipeBase = await API.graphql(graphqlOperation(createRecipe, { input: {
+      name: this.state.name,
+      price: this.state.price
+    }}))
+    const recipeId = createRecipeBase.data.createRecipe.id
+    const components = await this._createComponents(recipeId)
+    console.log(components)
   }
 
   loadIngredients = async () => {
