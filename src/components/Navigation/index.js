@@ -18,6 +18,7 @@ const routes = [
   {
     name: "Create Recipe",
     path: "/create-recipe",
+    auth: "vendor",
     exact: false,
     main: CreateRecipe
   }
@@ -37,25 +38,35 @@ class Navigation extends Component {
           <Menu className="sidebarNav">
             <h3 className="sidebarTitle">{this.props.user.name}</h3>
             <Nav vertical className="sidebarContainer">
-              {routes.map((route, index) => (
-                <NavItem key={index} className="navListItem">
-                  <Link className="sidebarLink" to={route.path}>{route.name}</Link>
-                </NavItem>
-              ))}
+              {routes.map((route, index) => {
+                if (route.auth && route.auth !== this.props.user.types[0]) {
+                  return null
+                }
+                
+                return (
+                  <NavItem key={index} className="navListItem">
+                    <Link className="sidebarLink" to={route.path}>{route.name}</Link>
+                  </NavItem>
+                )
+              })}
             </Nav>
             <Button theme="danger" onClick={this.props.signOut} className="sidebarSignOut">Sign Out</Button>
           </Menu>
 
           {/* Read main view */}
           <main className="page">
-            {routes.map((route, index) => (
-              <Route
+            {routes.map((route, index) => {
+              console.log(route.auth, this.props.user.types)
+              if (route.auth && route.auth !== this.props.user.types[0]) {
+                return null
+              }
+              return (<Route
                 key={index}
                 path={route.path}
                 exact={route.exact}
                 component={route.main}
-              />
-            ))}
+              />)
+            })}
           </main>
         </div>
       </Router>

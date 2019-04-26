@@ -14,6 +14,7 @@ export const getUserByUsername = `query SearchUsers(
       id
       name
       username
+      types
     }
   }
 }`

@@ -94,6 +94,14 @@ class RecipeItem extends Component {
     this.handlePourCodeChange = this.handlePourCodeChange.bind(this)
   }
 
+  ingredientNames(components) {
+    let nameList = []
+    for (let component of components) {
+      nameList.push(component.ingredient.name)
+    }
+    return nameList.join(', ')
+  }
+
   handleOrderCreation = async (event) => {
     event.preventDefault()
 
@@ -156,6 +164,7 @@ class RecipeItem extends Component {
         <div style={styles.recipeDetailsWrapper}>
           <p style={styles.recipeDrink}>{this.props.recipe.name}</p>
           <p style={styles.recipeDetails}>{this.props.recipe.description}</p>
+          <p style={styles.recipeDetails}>{this.ingredientNames(this.props.recipe.components.items)}</p>
           <Badge theme="success" style={styles.price}>${ (this.props.recipe.price / 100).toFixed(2) }</Badge>
           <Ratings
             widgetDimensions="25px"
