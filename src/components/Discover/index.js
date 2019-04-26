@@ -27,7 +27,7 @@ class Discover extends Component {
   }
 
   getRecipes = async () => {
-    const recipes = await API.graphql(graphqlOperation(listRecipes, { limit: 10 }))
+    const recipes = await API.graphql(graphqlOperation(listRecipes, { limit: 20 }))
     this.setState({
       recipes: recipes.data.listRecipes.items
     })

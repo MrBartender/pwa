@@ -106,6 +106,7 @@ class CreateRecipe extends Component {
     const recipeId = createRecipeBase.data.createRecipe.id
     const components = await this._createComponents(recipeId)
     console.log(components)
+    window.location.reload();
   }
 
   loadIngredients = async () => {

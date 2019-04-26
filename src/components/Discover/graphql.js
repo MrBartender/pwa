@@ -9,6 +9,13 @@ export const listRecipes = `query ListRecipes(
       name
       price
       description
+      components {
+        items {
+          ingredient {
+            name
+          }
+        }
+      }
     }
     nextToken
   }

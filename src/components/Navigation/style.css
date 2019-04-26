@@ -48,7 +48,9 @@
 }
 
 .sidebarSignOut {
-  margin-top: 7rem;
+  position: absolute;
+  bottom: 3rem;
+  left: 1rem;
 }
 
 .page {

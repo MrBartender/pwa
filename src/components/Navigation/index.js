@@ -43,7 +43,7 @@ class Navigation extends Component {
                 </NavItem>
               ))}
             </Nav>
-            <Button outline theme="danger" onClick={this.props.signOut} className="sidebarSignOut">Sign Out</Button>
+            <Button theme="danger" onClick={this.props.signOut} className="sidebarSignOut">Sign Out</Button>
           </Menu>
 
           {/* Read main view */}

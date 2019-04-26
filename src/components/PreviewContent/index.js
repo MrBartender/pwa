@@ -12,9 +12,6 @@ import './style.css';
 class PreviewContent extends Component {
   ingredientNames(components) {
     let nameList = []
-    if (!components) {
-      return ""
-    }
     for (let component of components) {
       nameList.push(component.ingredient.name)
     }
@@ -39,7 +36,7 @@ class PreviewContent extends Component {
           </CardTitle>
 
           <CardSubtitle className="recipeIngredients">
-            {this.ingredientNames(recipe.components)}
+            {this.ingredientNames(recipe.components.items)}
           </CardSubtitle>
 
           <Ratings
