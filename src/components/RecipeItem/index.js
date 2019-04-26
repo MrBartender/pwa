@@ -159,7 +159,7 @@ class RecipeItem extends Component {
       <div style={styles.wrapper}>
         <h1 className="recipeTitle">{this.props.recipe.name}</h1>
         <div style={styles.recipeImageWrapper}>
-          <img style={styles.recipeImage} src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=2249&q=80" alt="Logo" />;
+          <img style={styles.recipeImage} src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=2249&q=80" alt="Logo" />
         </div>
         <div style={styles.recipeDetailsWrapper}>
           <p style={styles.recipeDrink}>{this.props.recipe.name}</p>

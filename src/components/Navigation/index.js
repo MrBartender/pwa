@@ -35,14 +35,14 @@ class Navigation extends Component {
     return (
       <Router>
         <div>
-          <Menu className="sidebarNav">
+          <Menu disableAutoFocus className="sidebarNav">
             <h3 className="sidebarTitle">{this.props.user.name}</h3>
             <Nav vertical className="sidebarContainer">
               {routes.map((route, index) => {
                 if (route.auth && route.auth !== this.props.user.types[0]) {
                   return null
                 }
-                
+
                 return (
                   <NavItem key={index} className="navListItem">
                     <Link className="sidebarLink" to={route.path}>{route.name}</Link>
