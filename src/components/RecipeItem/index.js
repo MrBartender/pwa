@@ -131,7 +131,7 @@ class RecipeItem extends Component {
     })
 
     console.log(await postToQueue.json())
-    this.toggle()
+    window.location.reload()
   }
 
   toggle() {

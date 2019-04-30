@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SearchResults from '../SearchResults';
+
 import { API, graphqlOperation } from 'aws-amplify';
 import { listRecipes } from './graphql';
+
 import RecipeItem from '../RecipeItem';
 
 class Discover extends Component {
