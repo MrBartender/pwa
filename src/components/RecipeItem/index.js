@@ -125,13 +125,18 @@ class RecipeItem extends Component {
     }}))
 
     const orderId = orderResponse.data.createOrder.id
-    const postToQueue = await fetch('https://db9cqhrxrk.execute-api.us-east-1.amazonaws.com/dev/pour', {
+    fetch('https://db9cqhrxrk.execute-api.us-east-1.amazonaws.com/dev/pour', {
       method: 'POST',
       body: JSON.stringify({ 'orderID': orderId , 'pourCode': this.state.pourCode })
     })
-
-    console.log(await postToQueue.json())
-    window.location.reload()
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      this.props.reset()
+    })
+    .catch(error => {
+      console.error(error)
+    })
   }
 
   toggle() {
