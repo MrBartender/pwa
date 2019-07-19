@@ -1,0 +1,24 @@
+#####
+# Access details for an object in S3
+#
+type S3Object {
+  bucket: String!
+  key: String!
+  access: AccessLevel!
+}
+
+#####
+# Access level of an S3 Object
+#
+enum AccessLevel { public private }
+
+#####
+# Collection of images for an object
+#
+type ProfilePic
+{
+  icon: S3Object
+  small: S3Object
+  large: S3Object
+  banner: S3Object
+}

@@ -1,0 +1,11 @@
+#####
+# Piece of a recipe
+#
+type Component @model
+{
+  id: ID!
+  ingredient: Ingredient! @connection
+  product: Product @connection
+  ratio: Float!
+  recipe: Recipe! @connection(name: "RecipeComponents")
+}

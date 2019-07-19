@@ -1,0 +1,10 @@
+#####
+# Organized collection of drinks at a vendor
+#
+type Collection @model @searchable
+{
+  id: ID!
+  name: String!
+  drinks: [Recipe!]! @connection
+  vendor: Vendor @connection(name: "VendorCollections")
+}

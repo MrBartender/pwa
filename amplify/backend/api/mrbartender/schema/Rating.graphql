@@ -1,0 +1,11 @@
+#####
+# User rating of a recipe
+#
+type Rating @model
+{
+  id: ID!
+  reviewer: User! @connection(name: "UserReviews")
+  recipe: Recipe! @connection(name: "RecipeReviews")
+  score: Int!
+  comment: String
+}

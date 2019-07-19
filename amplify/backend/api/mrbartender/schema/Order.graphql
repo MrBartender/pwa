@@ -1,0 +1,40 @@
+#####
+# Order object created by a user
+#
+type Order @model
+{
+  id: ID!
+  status: OrderStatus!
+  price: Int!
+  cost: Int!
+  auth_code: Int!
+  consumer: User! @connection(name: "UserOrders")
+  recipe: Recipe! @connection(name: "OrderRecipe")
+  device: Device! @connection(name: "DeviceOrders")
+  vendor: Vendor! @connection(name: "VendorOrders")
+  timestamps: Timestamps!
+}
+
+#####
+# Status of a placed order
+#
+enum OrderStatus
+{
+  PENDING
+  POURING
+  POURED
+  SUSPENDED
+  CANCELLED
+  REFUND_REQUESTED
+  REFUNDED
+}
+
+#####
+# Timestamps for an order
+#
+type Timestamps
+{
+  ordered: AWSTimestamp
+  paid: AWSTimestamp
+  poured: AWSTimestamp
+}

@@ -1,0 +1,16 @@
+#####
+# Recipe of a drink
+#
+type Recipe @model @searchable
+{
+  id: ID!
+  name: String!
+  price: Int!
+  description: String
+  instructions: String
+  glassType: String
+  images: ProfilePic
+  components: [Component!]! @connection(name: "RecipeComponents")
+  reviews: [Rating!]! @connection(name: "RecipeReviews")
+  orders: [Order!]! @connection(name: "OrderRecipe")
+}

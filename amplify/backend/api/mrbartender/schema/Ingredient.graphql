@@ -1,0 +1,10 @@
+#####
+# Ingredient class (e.g. gin, vodka, OJ)
+#
+type Ingredient @model @searchable
+{
+  id: ID!
+  name: String!
+  alcoholic: Boolean!
+  products: [Product!]! @connection(name: "IngredientProducts")
+}

@@ -1,0 +1,11 @@
+#####
+# Actual product (e.g. Absolut Vodka Pineapple 750ml)
+#
+type Product @model @searchable
+{
+  id: ID!
+  name: String!
+  ingredient: Ingredient! @connection(name: "IngredientProducts")
+  proof: Int!
+  volume: Int!
+}

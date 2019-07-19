@@ -1,0 +1,26 @@
+#####
+# Automated pouring machine registered with a vendor
+#
+type Device @model @searchable
+{
+  id: ID!
+  status: DeviceStatus!
+  name: String!
+  semantic_id: String!
+  pourCode: String
+  vendor: Vendor! @connection(name: "VendorDevices")
+  calibration: Calibration!
+  pumps: [Pump!]! @connection
+  orders: [Order!]! @connection(name: "DeviceOrders")
+}
+
+#####
+# Public status of each device
+#
+enum DeviceStatus
+{
+  ACTIVE
+  INACTIVE
+  MAINTANCE
+  ERROR
+}
