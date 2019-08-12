@@ -27,5 +27,17 @@
             "StackName": "mrbartender-20190426043003",
             "StackId": "arn:aws:cloudformation:us-east-1:996076014670:stack/mrbartender-20190426043003/f60fcc40-67db-11e9-95f7-0e8cdcc47538"
         }
+    },
+    "develop": {
+        "awscloudformation": {
+            "AuthRoleName": "mrbartender-develop-20190812004303-authRole",
+            "UnauthRoleArn": "arn:aws:iam::996076014670:role/mrbartender-develop-20190812004303-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::996076014670:role/mrbartender-develop-20190812004303-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "mrbartender-develop-20190812004303-deployment",
+            "UnauthRoleName": "mrbartender-develop-20190812004303-unauthRole",
+            "StackName": "mrbartender-develop-20190812004303",
+            "StackId": "arn:aws:cloudformation:us-east-1:996076014670:stack/mrbartender-develop-20190812004303/1983e7a0-bcdd-11e9-8fe6-12a619bb25d0"
+        }
     }
 }
