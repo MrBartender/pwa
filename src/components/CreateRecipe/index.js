@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Card,
   CardTitle,
@@ -6,31 +6,31 @@ import {
   Button,
   Form,
   FormInput,
-  FormGroup
-} from "shards-react";
+  FormGroup,
+} from 'shards-react'
 
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import DualListBox from 'react-dual-listbox';
-import 'react-dual-listbox/lib/react-dual-listbox.css';
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+import DualListBox from 'react-dual-listbox'
+import 'react-dual-listbox/lib/react-dual-listbox.css'
 
-import { API, graphqlOperation } from 'aws-amplify';
-import { listIngredients } from './graphql';
-import { createComponent, createRecipe } from './graphql';
+import { API, graphqlOperation } from 'aws-amplify'
+import { listIngredients } from './graphql'
+import { createComponent, createRecipe } from './graphql'
 
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
-const SliderWithTooltip = createSliderWithTooltip(Slider);
+const createSliderWithTooltip = Slider.createSliderWithTooltip
+const SliderWithTooltip = createSliderWithTooltip(Slider)
 
 class CreateRecipe extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      description: "",
+      name: '',
+      description: '',
       ingredients: [],
       selected: [],
       total: 0.0,
-      price: 0
+      price: 0,
     }
     this.loadIngredients()
     this.handleNameChange = this.handleNameChange.bind(this)
@@ -43,19 +43,19 @@ class CreateRecipe extends Component {
 
   handleNameChange(event) {
     this.setState({
-      name: event.target.value
+      name: event.target.value,
     })
   }
 
   handlePriceChange(event) {
     this.setState({
-      price: Math.floor(event.target.value)
+      price: Math.floor(event.target.value),
     })
   }
 
   handleDescriptionChange(event) {
     this.setState({
-      description: event.target.value
+      description: event.target.value,
     })
   }
 
@@ -72,84 +72,107 @@ class CreateRecipe extends Component {
         }
         total += item.ratio
         return item
-      });
+      })
 
       return {
         ingredients,
-        total
-      };
-    });
+        total,
+      }
+    })
   }
 
-  _createComponents = async (recipeId) => {
+  _createComponents = async recipeId => {
     for (let ingredient of this.state.ingredients) {
       if (ingredient.ratio > 0) {
         // upload the component and save the id?
-        let componentId = await API.graphql(graphqlOperation(createComponent, { input: {
-          ratio: ingredient.ratio,
-          componentIngredientId: ingredient.id,
-          componentRecipeId: recipeId
-        }}))
+        let componentId = await API.graphql(
+          graphqlOperation(createComponent, {
+            input: {
+              ratio: ingredient.ratio,
+              componentIngredientId: ingredient.id,
+              componentRecipeId: recipeId,
+            },
+          })
+        )
         console.log(componentId)
       }
     }
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = async event => {
     event.preventDefault()
 
-    const createRecipeBase = await API.graphql(graphqlOperation(createRecipe, { input: {
-      name: this.state.name,
-      price: this.state.price,
-      description: this.state.description
-    }}))
+    const createRecipeBase = await API.graphql(
+      graphqlOperation(createRecipe, {
+        input: {
+          name: this.state.name,
+          price: this.state.price,
+          description: this.state.description,
+        },
+      })
+    )
     const recipeId = createRecipeBase.data.createRecipe.id
     const components = await this._createComponents(recipeId)
     console.log(components)
-    window.location.reload();
+    window.location.reload()
   }
 
   loadIngredients = async () => {
-    const response = await API.graphql(graphqlOperation(listIngredients, { limit: 20 }))
+    const response = await API.graphql(
+      graphqlOperation(listIngredients, { limit: 20 })
+    )
     const ingredients = response.data.listIngredients.items
-    
+
     this.setState({
-      ingredients: ingredients.map((ingredient) => {
+      ingredients: ingredients.map(ingredient => {
         ingredient['value'] = ingredient.id
         ingredient['label'] = ingredient.name
         ingredient['ratio'] = 0.0
         return ingredient
-      })
+      }),
     })
   }
 
   render() {
     return (
-      <Card style={{ maxWidth: "900px" }}>
+      <Card style={{ maxWidth: '900px' }}>
         <CardBody>
           <CardTitle>Create New Drink</CardTitle>
           <Form onSubmit={this.handleSubmit}>
             <FormGroup>
               <label htmlFor="#name">Name</label>
-              <FormInput id="#name" onChange={this.handleNameChange} placeholder="Pink Polar Bear" />
-            </FormGroup>
-            <FormGroup>
-              <label htmlFor="#price">Price</label>
-              <FormInput id="#price" type="number" onChange={this.handlePriceChange} placeholder="Cost in cents (433 = $4.33)" />
-            </FormGroup>
-            <FormGroup>
-              <label htmlFor="#description">Description</label>
-              <FormInput id="#description" onChange={this.handleDescriptionChange} placeholder="Tasty and fruity but also sharp and alert." />
-            </FormGroup>
-            <FormGroup>
-              <DualListBox
-                  options={this.state.ingredients}
-                  selected={this.state.selected}
-                  onChange={this.handleIngredientsChange}
+              <FormInput
+                id="#name"
+                onChange={this.handleNameChange}
+                placeholder="Pink Polar Bear"
               />
             </FormGroup>
             <FormGroup>
-              { this.state.selected.map((ingredient, index) => {
+              <label htmlFor="#price">Price</label>
+              <FormInput
+                id="#price"
+                type="number"
+                onChange={this.handlePriceChange}
+                placeholder="Cost in cents (433 = $4.33)"
+              />
+            </FormGroup>
+            <FormGroup>
+              <label htmlFor="#description">Description</label>
+              <FormInput
+                id="#description"
+                onChange={this.handleDescriptionChange}
+                placeholder="Tasty and fruity but also sharp and alert."
+              />
+            </FormGroup>
+            <FormGroup>
+              <DualListBox
+                options={this.state.ingredients}
+                selected={this.state.selected}
+                onChange={this.handleIngredientsChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              {this.state.selected.map((ingredient, index) => {
                 let i = 0
                 const ing = this.state.ingredients.filter((element, index2) => {
                   if (element.value === ingredient) {
@@ -160,11 +183,13 @@ class CreateRecipe extends Component {
                 })[0]
 
                 return (
-                  <div style={{ marginBottom: "15px" }} key={index}>
-                    <SliderWithTooltip 
+                  <div style={{ marginBottom: '15px' }} key={index}>
+                    <SliderWithTooltip
                       min={0}
                       max={100}
-                      defaultValue={Math.floor(100 / this.state.selected.length.toFixed(1))}
+                      defaultValue={Math.floor(
+                        100 / this.state.selected.length.toFixed(1)
+                      )}
                       tipFormatter={value => `${value}%`}
                       onAfterChange={value => this.handleRatioChange(value, i)}
                     />
@@ -174,12 +199,17 @@ class CreateRecipe extends Component {
               })}
             </FormGroup>
             <p>Total: {this.state.total}</p>
-            <Button disabled={this.state.total!==1.0 || this.state.name === ""} type="submit">Save</Button>
+            <Button
+              disabled={this.state.total !== 1.0 || this.state.name === ''}
+              type="submit"
+            >
+              Save
+            </Button>
           </Form>
         </CardBody>
       </Card>
-    );
+    )
   }
 }
 
-export default CreateRecipe;
+export default CreateRecipe

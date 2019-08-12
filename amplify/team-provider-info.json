@@ -26,11 +26,6 @@
             "UnauthRoleName": "mrbartender-20190426043003-unauthRole",
             "StackName": "mrbartender-20190426043003",
             "StackId": "arn:aws:cloudformation:us-east-1:996076014670:stack/mrbartender-20190426043003/f60fcc40-67db-11e9-95f7-0e8cdcc47538"
-        },
-        "categories": {
-            "auth": {
-                "mrbartender1631ddd4": {}
-            }
         }
     }
 }
