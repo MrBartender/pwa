@@ -1,9 +1,10 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react'
+import { withInfo } from '@storybook/addon-info'
 
-const req = require.context('../src/stories', true, /\.story\.js$/);
+const req = require.context('../stories', true, /\.story\.js$/)
 
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
+addDecorator(withInfo)
 
-configure(loadStories, module);
+configure(() => {
+  req.keys().forEach(filename => req(filename))
+}, module)

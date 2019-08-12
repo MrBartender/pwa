@@ -1,23 +1,23 @@
 #####
 #  User data
 #
-type User @model @searchable
-{
+type User @model @searchable {
   id: ID!
   name: String!
   username: String!
   types: [UserType!]!
+  # favoriteCollections: [CollectionFavorites!] @connection(name: "CollectionsFavorited")
+  # favoriteDrinks: [Recipe!]
   currentVendor: Vendor @connection(name: "VendorUsers")
   previousVendors: [Vendor!] @connection
-  orders: [Order!]! @connection(name: "UserOrders")
-  reviews: [Rating!]! @connection(name: "UserReviews")
+  orders: [Order!] @connection(name: "UserOrders")
+  reviews: [Rating!] @connection(name: "UserReviews")
 }
 
 #####
 # What roles a user can have
 #
-enum UserType
-{
+enum UserType {
   SUPPORT
   VENDOR
   HOST
