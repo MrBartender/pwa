@@ -1,5 +1,10 @@
 {
-	"auth": {},
+	"auth": {
+		"mrbartenderc9e7fb26": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
 	"api": {
 		"mrbartender": {
 			"service": "AppSync",

@@ -1,204 +1,6 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
-  createVendor(input: $input) {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
-  updateVendor(input: $input) {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
-  deleteVendor(input: $input) {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
 export const createCollection = `mutation CreateCollection($input: CreateCollectionInput!) {
   createCollection(input: $input) {
     id
@@ -210,6 +12,7 @@ export const createCollection = `mutation CreateCollection($input: CreateCollect
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -245,6 +48,7 @@ export const updateCollection = `mutation UpdateCollection($input: UpdateCollect
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -280,6 +84,7 @@ export const deleteCollection = `mutation DeleteCollection($input: DeleteCollect
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -304,186 +109,170 @@ export const deleteCollection = `mutation DeleteCollection($input: DeleteCollect
   }
 }
 `;
-export const createRating = `mutation CreateRating($input: CreateRatingInput!) {
-  createRating(input: $input) {
+export const createComponent = `mutation CreateComponent($input: CreateComponentInput!) {
+  createComponent(input: $input) {
     id
-    reviewer {
+    ingredient {
       id
       name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
+      alcoholic
+      products {
         nextToken
       }
     }
-    recipe {
+    product {
       id
       name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const updateRating = `mutation UpdateRating($input: UpdateRatingInput!) {
-  updateRating(input: $input) {
-    id
-    reviewer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const deleteRating = `mutation DeleteRating($input: DeleteRatingInput!) {
-  deleteRating(input: $input) {
-    id
-    reviewer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const createRecipe = `mutation CreateRecipe($input: CreateRecipeInput!) {
-  createRecipe(input: $input) {
-    id
-    name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    components {
       ingredient {
         id
         name
         alcoholic
       }
-      product {
+      proof
+      volume
+    }
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const updateComponent = `mutation UpdateComponent($input: UpdateComponentInput!) {
+  updateComponent(input: $input) {
+    id
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    product {
+      id
+      name
+      ingredient {
         id
         name
-        proof
-        volume
+        alcoholic
       }
-      ratio
+      proof
+      volume
     }
-    reviews {
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const deleteComponent = `mutation DeleteComponent($input: DeleteComponentInput!) {
+  deleteComponent(input: $input) {
+    id
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    product {
+      id
+      name
+      ingredient {
+        id
+        name
+        alcoholic
+      }
+      proof
+      volume
+    }
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
+  createDevice(input: $input) {
+    id
+    status
+    name
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    calibration {
+      formula
+    }
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -500,54 +289,41 @@ export const createRecipe = `mutation CreateRecipe($input: CreateRecipeInput!) {
   }
 }
 `;
-export const updateRecipe = `mutation UpdateRecipe($input: UpdateRecipeInput!) {
-  updateRecipe(input: $input) {
+export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
+  updateDevice(input: $input) {
     id
+    status
     name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
       }
-      small {
-        bucket
-        key
-        access
+      collections {
+        nextToken
       }
-      large {
-        bucket
-        key
-        access
+      devices {
+        nextToken
       }
-      banner {
-        bucket
-        key
-        access
+      orders {
+        nextToken
       }
     }
-    components {
-      ingredient {
-        id
-        name
-        alcoholic
-      }
-      product {
-        id
-        name
-        proof
-        volume
-      }
-      ratio
+    calibration {
+      formula
     }
-    reviews {
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -564,54 +340,41 @@ export const updateRecipe = `mutation UpdateRecipe($input: UpdateRecipeInput!) {
   }
 }
 `;
-export const deleteRecipe = `mutation DeleteRecipe($input: DeleteRecipeInput!) {
-  deleteRecipe(input: $input) {
+export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
+  deleteDevice(input: $input) {
     id
+    status
     name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
       }
-      small {
-        bucket
-        key
-        access
+      collections {
+        nextToken
       }
-      large {
-        bucket
-        key
-        access
+      devices {
+        nextToken
       }
-      banner {
-        bucket
-        key
-        access
+      orders {
+        nextToken
       }
     }
-    components {
-      ingredient {
-        id
-        name
-        alcoholic
-      }
-      product {
-        id
-        name
-        proof
-        volume
-      }
-      ratio
+    calibration {
+      formula
     }
-    reviews {
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -625,57 +388,6 @@ export const deleteRecipe = `mutation DeleteRecipe($input: DeleteRecipeInput!) {
       }
       nextToken
     }
-  }
-}
-`;
-export const createProduct = `mutation CreateProduct($input: CreateProductInput!) {
-  createProduct(input: $input) {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
-  }
-}
-`;
-export const updateProduct = `mutation UpdateProduct($input: UpdateProductInput!) {
-  updateProduct(input: $input) {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
-  }
-}
-`;
-export const deleteProduct = `mutation DeleteProduct($input: DeleteProductInput!) {
-  deleteProduct(input: $input) {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
   }
 }
 `;
@@ -730,13 +442,73 @@ export const deleteIngredient = `mutation DeleteIngredient($input: DeleteIngredi
   }
 }
 `;
-export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
-  createDevice(input: $input) {
+export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -755,52 +527,81 @@ export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
         nextToken
       }
     }
-    calibration {
-      formula
-    }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
-      id
-      name
-      drinks {
-        nextToken
-      }
-      vendor {
-        id
-        semanticId
-        name
-        website
-      }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
 `;
-export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
-  updateDevice(input: $input) {
+export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
+  updateOrder(input: $input) {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -819,52 +620,81 @@ export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
         nextToken
       }
     }
-    calibration {
-      formula
-    }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
-      id
-      name
-      drinks {
-        nextToken
-      }
-      vendor {
-        id
-        semanticId
-        name
-        website
-      }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
 `;
-export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
-  deleteDevice(input: $input) {
+export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
+  deleteOrder(input: $input) {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -883,42 +713,62 @@ export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
         nextToken
       }
     }
-    calibration {
-      formula
+    timestamps {
+      ordered
+      paid
+      poured
     }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
+  }
+}
+`;
+export const createProduct = `mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    id
+    name
+    ingredient {
       id
       name
-      drinks {
+      alcoholic
+      products {
         nextToken
       }
-      vendor {
-        id
-        semanticId
-        name
-        website
+    }
+    proof
+    volume
+  }
+}
+`;
+export const updateProduct = `mutation UpdateProduct($input: UpdateProductInput!) {
+  updateProduct(input: $input) {
+    id
+    name
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
       }
     }
+    proof
+    volume
+  }
+}
+`;
+export const deleteProduct = `mutation DeleteProduct($input: DeleteProductInput!) {
+  deleteProduct(input: $input) {
+    id
+    name
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    proof
+    volume
   }
 }
 `;
@@ -994,11 +844,324 @@ export const deletePump = `mutation DeletePump($input: DeletePumpInput!) {
   }
 }
 `;
+export const createRating = `mutation CreateRating($input: CreateRatingInput!) {
+  createRating(input: $input) {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const updateRating = `mutation UpdateRating($input: UpdateRatingInput!) {
+  updateRating(input: $input) {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const deleteRating = `mutation DeleteRating($input: DeleteRatingInput!) {
+  deleteRating(input: $input) {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const createRecipe = `mutation CreateRecipe($input: CreateRecipeInput!) {
+  createRecipe(input: $input) {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updateRecipe = `mutation UpdateRecipe($input: UpdateRecipeInput!) {
+  updateRecipe(input: $input) {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deleteRecipe = `mutation DeleteRecipe($input: DeleteRecipeInput!) {
+  deleteRecipe(input: $input) {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const createUser = `mutation CreateUser($input: CreateUserInput!) {
   createUser(input: $input) {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1052,6 +1215,7 @@ export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1105,6 +1269,7 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1153,287 +1318,203 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
   }
 }
 `;
-export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
-  createOrder(input: $input) {
+export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
+  createVendor(input: $input) {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }
 `;
-export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
-  updateOrder(input: $input) {
+export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
+  updateVendor(input: $input) {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }
 `;
-export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
-  deleteOrder(input: $input) {
+export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
+  deleteVendor(input: $input) {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }

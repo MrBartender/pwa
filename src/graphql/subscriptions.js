@@ -1,204 +1,6 @@
 // eslint-disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateVendor = `subscription OnCreateVendor {
-  onCreateVendor {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateVendor = `subscription OnUpdateVendor {
-  onUpdateVendor {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteVendor = `subscription OnDeleteVendor {
-  onDeleteVendor {
-    id
-    semanticId
-    name
-    website
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    currentUsers {
-      items {
-        id
-        name
-        username
-      }
-      nextToken
-    }
-    collections {
-      items {
-        id
-        name
-      }
-      nextToken
-    }
-    devices {
-      items {
-        id
-        status
-        name
-        semantic_id
-        pourCode
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-  }
-}
-`;
 export const onCreateCollection = `subscription OnCreateCollection {
   onCreateCollection {
     id
@@ -210,6 +12,7 @@ export const onCreateCollection = `subscription OnCreateCollection {
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -245,6 +48,7 @@ export const onUpdateCollection = `subscription OnUpdateCollection {
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -280,6 +84,7 @@ export const onDeleteCollection = `subscription OnDeleteCollection {
         price
         description
         instructions
+        glassType
       }
       nextToken
     }
@@ -304,186 +109,170 @@ export const onDeleteCollection = `subscription OnDeleteCollection {
   }
 }
 `;
-export const onCreateRating = `subscription OnCreateRating {
-  onCreateRating {
+export const onCreateComponent = `subscription OnCreateComponent {
+  onCreateComponent {
     id
-    reviewer {
+    ingredient {
       id
       name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
+      alcoholic
+      products {
         nextToken
       }
     }
-    recipe {
+    product {
       id
       name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const onUpdateRating = `subscription OnUpdateRating {
-  onUpdateRating {
-    id
-    reviewer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const onDeleteRating = `subscription OnDeleteRating {
-  onDeleteRating {
-    id
-    reviewer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    score
-    comment
-  }
-}
-`;
-export const onCreateRecipe = `subscription OnCreateRecipe {
-  onCreateRecipe {
-    id
-    name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
-      }
-      small {
-        bucket
-        key
-        access
-      }
-      large {
-        bucket
-        key
-        access
-      }
-      banner {
-        bucket
-        key
-        access
-      }
-    }
-    components {
       ingredient {
         id
         name
         alcoholic
       }
-      product {
+      proof
+      volume
+    }
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onUpdateComponent = `subscription OnUpdateComponent {
+  onUpdateComponent {
+    id
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    product {
+      id
+      name
+      ingredient {
         id
         name
-        proof
-        volume
+        alcoholic
       }
-      ratio
+      proof
+      volume
     }
-    reviews {
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onDeleteComponent = `subscription OnDeleteComponent {
+  onDeleteComponent {
+    id
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    product {
+      id
+      name
+      ingredient {
+        id
+        name
+        alcoholic
+      }
+      proof
+      volume
+    }
+    ratio
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+  }
+}
+`;
+export const onCreateDevice = `subscription OnCreateDevice {
+  onCreateDevice {
+    id
+    status
+    name
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    calibration {
+      formula
+    }
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -500,54 +289,41 @@ export const onCreateRecipe = `subscription OnCreateRecipe {
   }
 }
 `;
-export const onUpdateRecipe = `subscription OnUpdateRecipe {
-  onUpdateRecipe {
+export const onUpdateDevice = `subscription OnUpdateDevice {
+  onUpdateDevice {
     id
+    status
     name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
       }
-      small {
-        bucket
-        key
-        access
+      collections {
+        nextToken
       }
-      large {
-        bucket
-        key
-        access
+      devices {
+        nextToken
       }
-      banner {
-        bucket
-        key
-        access
+      orders {
+        nextToken
       }
     }
-    components {
-      ingredient {
-        id
-        name
-        alcoholic
-      }
-      product {
-        id
-        name
-        proof
-        volume
-      }
-      ratio
+    calibration {
+      formula
     }
-    reviews {
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -564,54 +340,41 @@ export const onUpdateRecipe = `subscription OnUpdateRecipe {
   }
 }
 `;
-export const onDeleteRecipe = `subscription OnDeleteRecipe {
-  onDeleteRecipe {
+export const onDeleteDevice = `subscription OnDeleteDevice {
+  onDeleteDevice {
     id
+    status
     name
-    price
-    description
-    instructions
-    profilePic {
-      icon {
-        bucket
-        key
-        access
+    semantic_id
+    pourCode
+    vendor {
+      id
+      semanticId
+      name
+      website
+      currentUsers {
+        nextToken
       }
-      small {
-        bucket
-        key
-        access
+      collections {
+        nextToken
       }
-      large {
-        bucket
-        key
-        access
+      devices {
+        nextToken
       }
-      banner {
-        bucket
-        key
-        access
+      orders {
+        nextToken
       }
     }
-    components {
-      ingredient {
-        id
-        name
-        alcoholic
-      }
-      product {
-        id
-        name
-        proof
-        volume
-      }
-      ratio
+    calibration {
+      formula
     }
-    reviews {
+    pumps {
       items {
         id
-        score
-        comment
+        semantic_id
+        status
+        costByVolume
+        volumeLeft
       }
       nextToken
     }
@@ -625,57 +388,6 @@ export const onDeleteRecipe = `subscription OnDeleteRecipe {
       }
       nextToken
     }
-  }
-}
-`;
-export const onCreateProduct = `subscription OnCreateProduct {
-  onCreateProduct {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
-  }
-}
-`;
-export const onUpdateProduct = `subscription OnUpdateProduct {
-  onUpdateProduct {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
-  }
-}
-`;
-export const onDeleteProduct = `subscription OnDeleteProduct {
-  onDeleteProduct {
-    id
-    name
-    ingredient {
-      id
-      name
-      alcoholic
-      products {
-        nextToken
-      }
-    }
-    proof
-    volume
   }
 }
 `;
@@ -730,13 +442,73 @@ export const onDeleteIngredient = `subscription OnDeleteIngredient {
   }
 }
 `;
-export const onCreateDevice = `subscription OnCreateDevice {
-  onCreateDevice {
+export const onCreateOrder = `subscription OnCreateOrder {
+  onCreateOrder {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -755,52 +527,81 @@ export const onCreateDevice = `subscription OnCreateDevice {
         nextToken
       }
     }
-    calibration {
-      formula
-    }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
-      id
-      name
-      drinks {
-        nextToken
-      }
-      vendor {
-        id
-        semanticId
-        name
-        website
-      }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
 `;
-export const onUpdateDevice = `subscription OnUpdateDevice {
-  onUpdateDevice {
+export const onUpdateOrder = `subscription OnUpdateOrder {
+  onUpdateOrder {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -819,52 +620,81 @@ export const onUpdateDevice = `subscription OnUpdateDevice {
         nextToken
       }
     }
-    calibration {
-      formula
-    }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
-      id
-      name
-      drinks {
-        nextToken
-      }
-      vendor {
-        id
-        semanticId
-        name
-        website
-      }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
 `;
-export const onDeleteDevice = `subscription OnDeleteDevice {
-  onDeleteDevice {
+export const onDeleteOrder = `subscription OnDeleteOrder {
+  onDeleteOrder {
     id
     status
-    name
-    semantic_id
-    pourCode
+    price
+    cost
+    auth_code
+    consumer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    device {
+      id
+      status
+      name
+      semantic_id
+      pourCode
+      vendor {
+        id
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
     vendor {
       id
       semanticId
@@ -883,42 +713,62 @@ export const onDeleteDevice = `subscription OnDeleteDevice {
         nextToken
       }
     }
-    calibration {
-      formula
+    timestamps {
+      ordered
+      paid
+      poured
     }
-    pumps {
-      items {
-        id
-        semantic_id
-        status
-        costByVolume
-        volumeLeft
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    availableRecipes {
+  }
+}
+`;
+export const onCreateProduct = `subscription OnCreateProduct {
+  onCreateProduct {
+    id
+    name
+    ingredient {
       id
       name
-      drinks {
+      alcoholic
+      products {
         nextToken
       }
-      vendor {
-        id
-        semanticId
-        name
-        website
+    }
+    proof
+    volume
+  }
+}
+`;
+export const onUpdateProduct = `subscription OnUpdateProduct {
+  onUpdateProduct {
+    id
+    name
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
       }
     }
+    proof
+    volume
+  }
+}
+`;
+export const onDeleteProduct = `subscription OnDeleteProduct {
+  onDeleteProduct {
+    id
+    name
+    ingredient {
+      id
+      name
+      alcoholic
+      products {
+        nextToken
+      }
+    }
+    proof
+    volume
   }
 }
 `;
@@ -994,11 +844,324 @@ export const onDeletePump = `subscription OnDeletePump {
   }
 }
 `;
+export const onCreateRating = `subscription OnCreateRating {
+  onCreateRating {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const onUpdateRating = `subscription OnUpdateRating {
+  onUpdateRating {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const onDeleteRating = `subscription OnDeleteRating {
+  onDeleteRating {
+    id
+    reviewer {
+      id
+      name
+      username
+      types
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      previousVendors {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    recipe {
+      id
+      name
+      price
+      description
+      instructions
+      glassType
+      components {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    score
+    comment
+  }
+}
+`;
+export const onCreateRecipe = `subscription OnCreateRecipe {
+  onCreateRecipe {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onUpdateRecipe = `subscription OnUpdateRecipe {
+  onUpdateRecipe {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onDeleteRecipe = `subscription OnDeleteRecipe {
+  onDeleteRecipe {
+    id
+    name
+    price
+    description
+    instructions
+    glassType
+    images {
+      icon {
+        bucket
+        key
+        access
+      }
+      small {
+        bucket
+        key
+        access
+      }
+      large {
+        bucket
+        key
+        access
+      }
+      banner {
+        bucket
+        key
+        access
+      }
+    }
+    components {
+      items {
+        id
+        ratio
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const onCreateUser = `subscription OnCreateUser {
   onCreateUser {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1052,6 +1215,7 @@ export const onUpdateUser = `subscription OnUpdateUser {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1105,6 +1269,7 @@ export const onDeleteUser = `subscription OnDeleteUser {
     id
     name
     username
+    types
     currentVendor {
       id
       semanticId
@@ -1153,287 +1318,203 @@ export const onDeleteUser = `subscription OnDeleteUser {
   }
 }
 `;
-export const onCreateOrder = `subscription OnCreateOrder {
-  onCreateOrder {
+export const onCreateVendor = `subscription OnCreateVendor {
+  onCreateVendor {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }
 `;
-export const onUpdateOrder = `subscription OnUpdateOrder {
-  onUpdateOrder {
+export const onUpdateVendor = `subscription OnUpdateVendor {
+  onUpdateVendor {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }
 `;
-export const onDeleteOrder = `subscription OnDeleteOrder {
-  onDeleteOrder {
+export const onDeleteVendor = `subscription OnDeleteVendor {
+  onDeleteVendor {
     id
-    status
-    price
-    cost
-    auth_code
-    consumer {
-      id
-      name
-      username
-      currentVendor {
-        id
-        semanticId
-        name
-        website
+    semanticId
+    name
+    website
+    profilePic {
+      icon {
+        bucket
+        key
+        access
       }
-      previousVendors {
-        nextToken
+      small {
+        bucket
+        key
+        access
       }
-      orders {
-        nextToken
+      large {
+        bucket
+        key
+        access
       }
-      reviews {
-        nextToken
-      }
-    }
-    recipe {
-      id
-      name
-      price
-      description
-      instructions
-      components {
-        ratio
-      }
-      reviews {
-        nextToken
-      }
-      orders {
-        nextToken
+      banner {
+        bucket
+        key
+        access
       }
     }
-    device {
-      id
-      status
-      name
-      semantic_id
-      pourCode
-      vendor {
+    currentUsers {
+      items {
         id
-        semanticId
         name
-        website
+        username
+        types
       }
-      calibration {
-        formula
-      }
-      pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      availableRecipes {
+      nextToken
+    }
+    collections {
+      items {
         id
         name
       }
+      nextToken
     }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
+    devices {
+      items {
+        id
+        status
+        name
+        semantic_id
+        pourCode
       }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
+      nextToken
     }
-    timestamps {
-      ordered
-      paid
-      poured
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
     }
   }
 }
