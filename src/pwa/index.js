@@ -44,7 +44,7 @@ class Pwa extends Component {
     // return <Navigation user={this.state.user} signOut={this.signOut} />
     return (
       <div className="centered">
-        <h1>Log In</h1>
+        <h1 style={{ color: 'white' }}>Log In</h1>
         <GoogleSignInButton />
       </div>
     )
