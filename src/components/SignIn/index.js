@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { Auth } from 'aws-amplify'
 
-class GoogleSignInButton extends Component {
+import './style.css'
+
+class SignIn extends Component {
   constructor(props) {
     super(props)
     this.createScript = this.createScript.bind(this)
-    this.renderButton = this.renderButton.bind(this)
+    this.createSignInButton = this.createSignInButton.bind(this)
   }
 
+  /**
+   * Any time the SignIn page is rendered, load the Google SDK
+   */
   componentDidMount() {
     const ga =
       window.gapi && window.gapi.auth2
@@ -16,6 +21,9 @@ class GoogleSignInButton extends Component {
     if (!ga) this.createScript()
   }
 
+  /**
+   * No SDK was found, so let's create one and initialize it
+   */
   createScript() {
     // load the Google SDK
     const script = document.createElement('script')
@@ -34,13 +42,16 @@ class GoogleSignInButton extends Component {
             scope: 'profile email openid',
           })
           .then(() => {
-            this.renderButton()
+            this.createSignInButton()
           })
       })
     }
     document.body.appendChild(script)
   }
 
+  /**
+   * Login to the Auth object via the Google user
+   */
   async getAWSCredentials(googleUser) {
     const { id_token, expires_at } = googleUser.getAuthResponse()
     const profile = googleUser.getBasicProfile()
@@ -57,9 +68,12 @@ class GoogleSignInButton extends Component {
     console.log('credentials', credentials)
   }
 
-  renderButton() {
+  /**
+   * Inject the Google sign in button after SDK is ready
+   */
+  createSignInButton() {
     window.gapi.signin2.render('googleSignIn', {
-      scope: 'profile email',
+      scope: 'profile email openid',
       width: 240,
       height: 40,
       longtitle: true,
@@ -69,9 +83,22 @@ class GoogleSignInButton extends Component {
     })
   }
 
+  /**
+   * Build the SignIn page
+   * (essentially the render method)
+   */
   render() {
-    return <div id="googleSignIn"></div>
+    if (this.props.authState === 'signIn') {
+      return (
+        <div className="centered">
+          <h1 style={{ color: 'white' }}>Log In</h1>
+          <div id="googleSignIn"></div>
+        </div>
+      )
+    }
+
+    return null
   }
 }
 
-export default GoogleSignInButton
+export default SignIn

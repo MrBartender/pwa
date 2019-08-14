@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 
 // GraphQL
 import Amplify, { Auth } from 'aws-amplify'
-import awsmobile from '../aws-exports'
+import { Authenticator } from 'aws-amplify-react'
+import amplifyConfig from '../aws-exports'
 // import { withAuthenticator } from 'aws-amplify-react'
 // import { getUserByUsername, createUser } from './graphql'
-import GoogleSignInButton from '../components/GoogleSignInButton'
+import SignIn from '../components/SignIn'
 
 // Components
 // import CreateUserDetails from '../CreateUserDetails'
-// import Navigation from '../Navigation'
+import Navigation from '../components/Navigation'
 
 // App-wide styles
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,7 +18,7 @@ import 'shards-ui/dist/css/shards.min.css'
 import './style.css'
 
 // Initialize the backend framework
-Amplify.configure(awsmobile)
+Amplify.configure(amplifyConfig)
 
 class Pwa extends Component {
   constructor(props) {
@@ -43,10 +44,10 @@ class Pwa extends Component {
     // User is fully logged in
     // return <Navigation user={this.state.user} signOut={this.signOut} />
     return (
-      <div className="centered">
-        <h1 style={{ color: 'white' }}>Log In</h1>
-        <GoogleSignInButton />
-      </div>
+      <Authenticator hideDefault={true}>
+        <SignIn override={'SignIn'} />
+        <Navigation />
+      </Authenticator>
     )
   }
 }
