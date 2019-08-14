@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import { Auth } from 'aws-amplify'
 
 class GoogleSignInButton extends Component {
+  constructor(props) {
+    super(props)
+    this.createScript = this.createScript.bind(this)
+    this.renderButton = this.renderButton.bind(this)
+  }
+
   componentDidMount() {
     const ga =
       window.gapi && window.gapi.auth2
@@ -20,12 +26,16 @@ class GoogleSignInButton extends Component {
       // init the Google SDK client
       const g = window.gapi
       g.load('auth2', () => {
-        g.auth2.init({
-          client_id:
-            '167223859798-utaf2kgse8chgj6qldv85ddml63net4k.apps.googleusercontent.com',
-          // authorized scopes
-          scope: 'profile email openid',
-        })
+        g.auth2
+          .init({
+            client_id:
+              '167223859798-utaf2kgse8chgj6qldv85ddml63net4k.apps.googleusercontent.com',
+            // authorized scopes
+            scope: 'profile email openid',
+          })
+          .then(() => {
+            this.renderButton()
+          })
       })
     }
     document.body.appendChild(script)
@@ -47,26 +57,20 @@ class GoogleSignInButton extends Component {
     console.log('credentials', credentials)
   }
 
-  // signIn() {
-  //   const ga = window.gapi.auth2.getAuthInstance()
-  //   ga.signIn().then(
-  //     googleUser => {
-  //       this.getAWSCredentials(googleUser)
-  //     },
-  //     error => {
-  //       console.log(error)
-  //     }
-  //   )
-  // }
+  renderButton() {
+    window.gapi.signin2.render('googleSignIn', {
+      scope: 'profile email',
+      width: 240,
+      height: 40,
+      longtitle: true,
+      theme: 'dark',
+      onsuccess: this.getAWSCredentials,
+      onfailure: () => {},
+    })
+  }
 
   render() {
-    return (
-      <div
-        className="g-signin2"
-        data-onsuccess="getAWSCredentials"
-        data-theme="dark"
-      ></div>
-    )
+    return <div id="googleSignIn"></div>
   }
 }
 
