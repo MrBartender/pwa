@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 import { Auth } from 'aws-amplify'
+import { Button } from 'shards-react'
 
 class SignOut extends Component {
   async signOut() {
@@ -17,7 +17,11 @@ class SignOut extends Component {
   }
 
   render() {
-    return <button onClick={this.signOut}>Sign Out</button>
+    return (
+      <Button theme="danger" onClick={this.signOut} className="sidebarSignOut">
+        Sign Out
+      </Button>
+    )
   }
 }
 

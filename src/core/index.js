@@ -4,11 +4,11 @@ import React, { Component } from 'react'
 import Amplify, { Auth, Hub } from 'aws-amplify'
 import amplifyConfig from '../aws-exports'
 
-// Pages and Profiles that could get rendered
+// Pages and Clients that could get rendered
 import SignIn from './pages/SignIn'
 import ProfileSelect from './pages/ProfileSelect'
-import Vendor from '../profiles/Vendor'
-import Consumer from '../profiles/Consumer'
+import Vendor from '../clients/Vendor'
+import Consumer from '../clients/Consumer'
 
 // App-wide styles
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,6 +22,12 @@ class Core extends Component {
   state = { user: null, profile: null }
 
   componentDidMount() {
+    // Ensure state starts accurately
+    Auth.currentAuthenticatedUser()
+      .then(user => this.setState({ user }))
+      .catch(() => this.setState({ user: null }))
+
+    // Auto-detect changes in auth state via Hub pubsub service
     Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
         case 'signIn':
@@ -34,33 +40,29 @@ class Core extends Component {
           break
       }
     })
-
-    Auth.currentAuthenticatedUser()
-      .then(user => this.setState({ user }))
-      .catch(() => this.setState({ user: null }))
   }
 
   render() {
     const { user, profile } = this.state
 
-    // Verify Logged In
+    // Verify Logged In Via Google
     if (!user) {
       return <SignIn />
     }
 
-    // Select Profile (Story)
+    // Select Profile to Use (Determines Client to Use)
     if (!profile) {
       return (
         <ProfileSelect selectProfile={profile => this.setState({ profile })} />
       )
     }
 
-    // Vendor Story
+    // Launch Vendor Client
     if (profile === 'vendor') {
       return <Vendor user={user} />
     }
 
-    // Consumer Story
+    // Launch Consumer Client
     if (profile === 'consumer') {
       return <Consumer user={user} />
     }

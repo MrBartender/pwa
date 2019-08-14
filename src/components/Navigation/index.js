@@ -1,81 +1,50 @@
 import React, { Component } from 'react'
 import { slide as Menu } from 'react-burger-menu'
-import { Nav, NavItem, Button } from 'shards-react'
+import { Nav, NavItem } from 'shards-react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+import SignOut from '../../core/components/SignOut'
 import './style.css'
 
-// Route pages
-// import Discover from '../Discover'
-import CreateRecipe from '../CreateRecipe'
-
-const routes = [
-  // {
-  //   name: 'Discover',
-  //   path: '/',
-  //   exact: true,
-  //   main: Discover,
-  // },
-  {
-    name: 'Create Recipe',
-    path: '/create-recipe',
-    auth: 'vendor',
-    exact: false,
-    main: CreateRecipe,
-  },
-]
-
 class Navigation extends Component {
-  showSettings(event) {
-    event.preventDefault()
-    console.log('pressed')
-  }
-
   render() {
-    if (this.props.authState === 'signedIn') {
-      return (
-        <Router>
-          <div>
-            <Menu disableAutoFocus className="sidebarNav">
-              <h3 className="sidebarTitle">{this.props.authData.name}</h3>
-              <Nav vertical className="sidebarContainer">
-                {routes.map((route, index) => {
-                  return (
-                    <NavItem key={index} className="navListItem">
-                      <Link className="sidebarLink" to={route.path}>
-                        {route.name}
-                      </Link>
-                    </NavItem>
-                  )
-                })}
-              </Nav>
-              <Button
-                theme="danger"
-                onClick={() => console.log('SignOut :(')}
-                className="sidebarSignOut"
-              >
-                Sign Out
-              </Button>
-            </Menu>
+    const { user, routes } = this.props
 
-            {/* Read main view */}
-            <main className="page">
+    return (
+      <Router>
+        <div>
+          <Menu disableAutoFocus className="sidebarNav">
+            <h3 className="sidebarTitle">{user.name}</h3>
+            <Nav vertical className="sidebarContainer">
               {routes.map((route, index) => {
                 return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.main}
-                  />
+                  <NavItem key={index} className="navListItem">
+                    <Link className="sidebarLink" to={route.path}>
+                      <img src={route.icon} alt={route.name} />
+                    </Link>
+                  </NavItem>
                 )
               })}
-            </main>
-          </div>
-        </Router>
-      )
-    }
+            </Nav>
+            <SignOut />
+          </Menu>
 
-    return null
+          {/* Read main view */}
+          <main className="page">
+            {routes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.main}
+                />
+              )
+            })}
+          </main>
+        </div>
+      </Router>
+    )
   }
 }
 

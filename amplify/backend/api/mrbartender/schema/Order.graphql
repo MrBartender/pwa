@@ -1,14 +1,13 @@
 #####
 # Order object created by a user
 #
-type Order @model
-{
+type Order @model {
   id: ID!
   status: OrderStatus!
   price: Int!
   cost: Int!
   auth_code: Int!
-  consumer: User! @connection(name: "UserOrders")
+  consumer: Consumer! @connection(name: "ConsumerOrders")
   recipe: Recipe! @connection(name: "OrderRecipe")
   device: Device! @connection(name: "DeviceOrders")
   vendor: Vendor! @connection(name: "VendorOrders")
@@ -18,8 +17,7 @@ type Order @model
 #####
 # Status of a placed order
 #
-enum OrderStatus
-{
+enum OrderStatus {
   PENDING
   POURING
   POURED
@@ -32,8 +30,7 @@ enum OrderStatus
 #####
 # Timestamps for an order
 #
-type Timestamps
-{
+type Timestamps {
   ordered: AWSTimestamp
   paid: AWSTimestamp
   poured: AWSTimestamp

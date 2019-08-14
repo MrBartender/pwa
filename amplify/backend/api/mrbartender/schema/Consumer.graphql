@@ -1,0 +1,11 @@
+#####
+# Consumer profile data
+#
+type Consumer @model @searchable @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  # favoriteCollections: [CollectionFavorites!]! @connection(name: "CollectionsFavorited")
+  # favoriteDrinks: [Recipe!]! @connection
+  currentVendor: Vendor @connection(name: "VendorConsumers")
+  orders: [Order!] @connection(name: "ConsumerOrders")
+  reviews: [Rating!] @connection(name: "ConsumerReviews")
+}

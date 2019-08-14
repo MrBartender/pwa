@@ -1,14 +1,13 @@
 #####
-# Vendor that owns bartenders
+# Vendor profile data
 #
-type Vendor @model @searchable
-{
+type Vendor @model @searchable {
   id: ID!
   semanticId: String!
   name: String!
   website: AWSURL
   profilePic: ProfilePic
-  currentUsers: [User!]! @connection(name: "VendorUsers")
+  currentConsumers: [Consumer!]! @connection(name: "VendorConsumers")
   collections: [Collection!] @connection(name: "VendorCollections")
   devices: [Device!]! @connection(name: "VendorDevices")
   orders: [Order!]! @connection(name: "VendorOrders")
