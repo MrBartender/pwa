@@ -19,6 +19,7 @@ class SignIn extends Component {
         ? window.gapi.auth2.getAuthInstance()
         : null
     if (!ga) this.createScript()
+    else this.createSignInButton()
   }
 
   /**
@@ -52,7 +53,7 @@ class SignIn extends Component {
   /**
    * Login to the Auth object via the Google user
    */
-  async getAWSCredentials(googleUser) {
+  async federatedSignIn(googleUser) {
     const { id_token, expires_at } = googleUser.getAuthResponse()
     const profile = googleUser.getBasicProfile()
     let user = {
@@ -60,12 +61,13 @@ class SignIn extends Component {
       name: profile.getName(),
     }
 
-    const credentials = await Auth.federatedSignIn(
-      'google',
-      { token: id_token, expires_at },
-      user
-    )
-    console.log('credentials', credentials)
+    Auth.federatedSignIn('google', { token: id_token, expires_at }, user)
+      .then(credentials => {
+        console.log(credentials)
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
   /**
@@ -77,27 +79,21 @@ class SignIn extends Component {
       width: 240,
       height: 40,
       longtitle: true,
-      theme: 'dark',
-      onsuccess: this.getAWSCredentials,
-      onfailure: () => {},
+      theme: 'light',
+      onsuccess: this.federatedSignIn,
     })
   }
 
   /**
-   * Build the SignIn page
-   * (essentially the render method)
+   * Build the SignIn Page
    */
   render() {
-    if (this.props.authState === 'signIn') {
-      return (
-        <div className="centered">
-          <h1 style={{ color: 'white' }}>Log In</h1>
-          <div id="googleSignIn"></div>
-        </div>
-      )
-    }
-
-    return null
+    return (
+      <div className="centered">
+        <h1 style={{ color: 'white' }}>Sign In</h1>
+        <div id="googleSignIn"></div>
+      </div>
+    )
   }
 }
 

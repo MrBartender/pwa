@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './style.css'
-import Pwa from './pwa'
+
+import Core from './core'
 import * as serviceWorker from './serviceWorker'
 
-ReactDOM.render(<Pwa />, document.getElementById('root'))
+ReactDOM.render(<Core />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
