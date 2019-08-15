@@ -21,7 +21,7 @@ export const onCreateCollection = `subscription OnCreateCollection {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -57,7 +57,7 @@ export const onUpdateCollection = `subscription OnUpdateCollection {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -93,7 +93,7 @@ export const onDeleteCollection = `subscription OnDeleteCollection {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -238,6 +238,132 @@ export const onDeleteComponent = `subscription OnDeleteComponent {
   }
 }
 `;
+export const onCreateConsumer = `subscription OnCreateConsumer {
+  onCreateConsumer {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onUpdateConsumer = `subscription OnUpdateConsumer {
+  onUpdateConsumer {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const onDeleteConsumer = `subscription OnDeleteConsumer {
+  onDeleteConsumer {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const onCreateDevice = `subscription OnCreateDevice {
   onCreateDevice {
     id
@@ -250,7 +376,7 @@ export const onCreateDevice = `subscription OnCreateDevice {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -301,7 +427,7 @@ export const onUpdateDevice = `subscription OnUpdateDevice {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -352,7 +478,7 @@ export const onDeleteDevice = `subscription OnDeleteDevice {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -451,17 +577,11 @@ export const onCreateOrder = `subscription OnCreateOrder {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -514,7 +634,7 @@ export const onCreateOrder = `subscription OnCreateOrder {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -544,17 +664,11 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -607,7 +721,7 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -637,17 +751,11 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -700,7 +808,7 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -849,17 +957,11 @@ export const onCreateRating = `subscription OnCreateRating {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -895,17 +997,11 @@ export const onUpdateRating = `subscription OnUpdateRating {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -941,17 +1037,11 @@ export const onDeleteRating = `subscription OnDeleteRating {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -1156,168 +1246,6 @@ export const onDeleteRecipe = `subscription OnDeleteRecipe {
   }
 }
 `;
-export const onCreateUser = `subscription OnCreateUser {
-  onCreateUser {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateUser = `subscription OnUpdateUser {
-  onUpdateUser {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteUser = `subscription OnDeleteUser {
-  onDeleteUser {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
 export const onCreateVendor = `subscription OnCreateVendor {
   onCreateVendor {
     id
@@ -1346,12 +1274,9 @@ export const onCreateVendor = `subscription OnCreateVendor {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }
@@ -1413,12 +1338,9 @@ export const onUpdateVendor = `subscription OnUpdateVendor {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }
@@ -1480,12 +1402,9 @@ export const onDeleteVendor = `subscription OnDeleteVendor {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }

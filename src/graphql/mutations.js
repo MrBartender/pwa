@@ -21,7 +21,7 @@ export const createCollection = `mutation CreateCollection($input: CreateCollect
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -57,7 +57,7 @@ export const updateCollection = `mutation UpdateCollection($input: UpdateCollect
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -93,7 +93,7 @@ export const deleteCollection = `mutation DeleteCollection($input: DeleteCollect
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -238,6 +238,132 @@ export const deleteComponent = `mutation DeleteComponent($input: DeleteComponent
   }
 }
 `;
+export const createConsumer = `mutation CreateConsumer($input: CreateConsumerInput!) {
+  createConsumer(input: $input) {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const updateConsumer = `mutation UpdateConsumer($input: UpdateConsumerInput!) {
+  updateConsumer(input: $input) {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const deleteConsumer = `mutation DeleteConsumer($input: DeleteConsumerInput!) {
+  deleteConsumer(input: $input) {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
 export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
   createDevice(input: $input) {
     id
@@ -250,7 +376,7 @@ export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -301,7 +427,7 @@ export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -352,7 +478,7 @@ export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -451,17 +577,11 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -514,7 +634,7 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -544,17 +664,11 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -607,7 +721,7 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -637,17 +751,11 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -700,7 +808,7 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -849,17 +957,11 @@ export const createRating = `mutation CreateRating($input: CreateRatingInput!) {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -895,17 +997,11 @@ export const updateRating = `mutation UpdateRating($input: UpdateRatingInput!) {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -941,17 +1037,11 @@ export const deleteRating = `mutation DeleteRating($input: DeleteRatingInput!) {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -1156,168 +1246,6 @@ export const deleteRecipe = `mutation DeleteRecipe($input: DeleteRecipeInput!) {
   }
 }
 `;
-export const createUser = `mutation CreateUser($input: CreateUserInput!) {
-  createUser(input: $input) {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
-  updateUser(input: $input) {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
-  deleteUser(input: $input) {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
 export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
   createVendor(input: $input) {
     id
@@ -1346,12 +1274,9 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }
@@ -1413,12 +1338,9 @@ export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }
@@ -1480,12 +1402,9 @@ export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }

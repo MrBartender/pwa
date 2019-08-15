@@ -21,7 +21,7 @@ export const getCollection = `query GetCollection($id: ID!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -136,6 +136,73 @@ export const listComponents = `query ListComponents(
   }
 }
 `;
+export const getConsumer = `query GetConsumer($id: ID!) {
+  getConsumer(id: $id) {
+    id
+    currentVendor {
+      id
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    orders {
+      items {
+        id
+        status
+        price
+        cost
+        auth_code
+      }
+      nextToken
+    }
+    reviews {
+      items {
+        id
+        score
+        comment
+      }
+      nextToken
+    }
+  }
+}
+`;
+export const listConsumers = `query ListConsumers(
+  $filter: ModelConsumerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listConsumers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
 export const getDevice = `query GetDevice($id: ID!) {
   getDevice(id: $id) {
     id
@@ -148,7 +215,7 @@ export const getDevice = `query GetDevice($id: ID!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -263,17 +330,11 @@ export const getOrder = `query GetOrder($id: ID!) {
     auth_code
     consumer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -326,7 +387,7 @@ export const getOrder = `query GetOrder($id: ID!) {
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -361,9 +422,6 @@ export const listOrders = `query ListOrders(
       auth_code
       consumer {
         id
-        name
-        username
-        types
       }
       recipe {
         id
@@ -489,17 +547,11 @@ export const getRating = `query GetRating($id: ID!) {
     id
     reviewer {
       id
-      name
-      username
-      types
       currentVendor {
         id
         semanticId
         name
         website
-      }
-      previousVendors {
-        nextToken
       }
       orders {
         nextToken
@@ -540,9 +592,6 @@ export const listRatings = `query ListRatings(
       id
       reviewer {
         id
-        name
-        username
-        types
       }
       recipe {
         id
@@ -644,91 +693,6 @@ export const listRecipes = `query ListRecipes(
   }
 }
 `;
-export const getUser = `query GetUser($id: ID!) {
-  getUser(id: $id) {
-    id
-    name
-    username
-    types
-    currentVendor {
-      id
-      semanticId
-      name
-      website
-      currentUsers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    previousVendors {
-      items {
-        id
-        semanticId
-        name
-        website
-      }
-      nextToken
-    }
-    orders {
-      items {
-        id
-        status
-        price
-        cost
-        auth_code
-      }
-      nextToken
-    }
-    reviews {
-      items {
-        id
-        score
-        comment
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const listUsers = `query ListUsers(
-  $filter: ModelUserFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      username
-      types
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
 export const getVendor = `query GetVendor($id: ID!) {
   getVendor(id: $id) {
     id
@@ -757,12 +721,9 @@ export const getVendor = `query GetVendor($id: ID!) {
         access
       }
     }
-    currentUsers {
+    currentConsumers {
       items {
         id
-        name
-        username
-        types
       }
       nextToken
     }
@@ -807,7 +768,7 @@ export const listVendors = `query ListVendors(
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {
@@ -847,6 +808,37 @@ export const searchCollections = `query SearchCollections(
         semanticId
         name
         website
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const searchConsumers = `query SearchConsumers(
+  $filter: SearchableConsumerFilterInput
+  $sort: SearchableConsumerSortInput
+  $limit: Int
+  $nextToken: Int
+) {
+  searchConsumers(
+    filter: $filter
+    sort: $sort
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      currentVendor {
+        id
+        semanticId
+        name
+        website
+      }
+      orders {
+        nextToken
+      }
+      reviews {
+        nextToken
       }
     }
     nextToken
@@ -975,43 +967,6 @@ export const searchRecipes = `query SearchRecipes(
   }
 }
 `;
-export const searchUsers = `query SearchUsers(
-  $filter: SearchableUserFilterInput
-  $sort: SearchableUserSortInput
-  $limit: Int
-  $nextToken: Int
-) {
-  searchUsers(
-    filter: $filter
-    sort: $sort
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      name
-      username
-      types
-      currentVendor {
-        id
-        semanticId
-        name
-        website
-      }
-      previousVendors {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-      reviews {
-        nextToken
-      }
-    }
-    nextToken
-  }
-}
-`;
 export const searchVendors = `query SearchVendors(
   $filter: SearchableVendorFilterInput
   $sort: SearchableVendorSortInput
@@ -1029,7 +984,7 @@ export const searchVendors = `query SearchVendors(
       semanticId
       name
       website
-      currentUsers {
+      currentConsumers {
         nextToken
       }
       collections {

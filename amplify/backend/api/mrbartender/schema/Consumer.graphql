@@ -1,8 +1,20 @@
 #####
 # Consumer profile data
 #
-type Consumer @model @searchable @auth(rules: [{ allow: owner }]) {
-  id: ID!
+type Consumer
+  @model
+  @searchable
+  @key(fields: ["user"])
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "user"
+        operations: [create, update, delete, read]
+      }
+    ]
+  ) {
+  user: String!
   # favoriteCollections: [CollectionFavorites!]! @connection(name: "CollectionsFavorited")
   # favoriteDrinks: [Recipe!]! @connection
   currentVendor: Vendor @connection(name: "VendorConsumers")
