@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-// Backend Integration
-import Amplify, { Auth, Hub } from 'aws-amplify'
-import amplifyConfig from '../aws-exports'
+// Backend Integrations
+import { Auth, Hub } from 'aws-amplify'
 
 // Pages and Clients that could get rendered
 import SignIn from './pages/SignIn'
@@ -14,9 +13,6 @@ import Consumer from '../clients/Consumer'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'shards-ui/dist/css/shards.min.css'
 import './style.css'
-
-// Initialize the backend framework
-Amplify.configure(amplifyConfig)
 
 class Core extends Component {
   state = { user: null, profile: null }
