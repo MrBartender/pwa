@@ -240,7 +240,7 @@ export const deleteComponent = `mutation DeleteComponent($input: DeleteComponent
 `;
 export const createConsumer = `mutation CreateConsumer($input: CreateConsumerInput!) {
   createConsumer(input: $input) {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -282,7 +282,7 @@ export const createConsumer = `mutation CreateConsumer($input: CreateConsumerInp
 `;
 export const updateConsumer = `mutation UpdateConsumer($input: UpdateConsumerInput!) {
   updateConsumer(input: $input) {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -324,7 +324,7 @@ export const updateConsumer = `mutation UpdateConsumer($input: UpdateConsumerInp
 `;
 export const deleteConsumer = `mutation DeleteConsumer($input: DeleteConsumerInput!) {
   deleteConsumer(input: $input) {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -576,7 +576,7 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -663,7 +663,7 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -750,7 +750,7 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -956,7 +956,7 @@ export const createRating = `mutation CreateRating($input: CreateRatingInput!) {
   createRating(input: $input) {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -996,7 +996,7 @@ export const updateRating = `mutation UpdateRating($input: UpdateRatingInput!) {
   updateRating(input: $input) {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -1036,7 +1036,7 @@ export const deleteRating = `mutation DeleteRating($input: DeleteRatingInput!) {
   deleteRating(input: $input) {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -1276,7 +1276,7 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }
@@ -1340,7 +1340,7 @@ export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }
@@ -1404,7 +1404,7 @@ export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }

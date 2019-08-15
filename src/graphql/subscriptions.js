@@ -240,7 +240,7 @@ export const onDeleteComponent = `subscription OnDeleteComponent {
 `;
 export const onCreateConsumer = `subscription OnCreateConsumer {
   onCreateConsumer {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -282,7 +282,7 @@ export const onCreateConsumer = `subscription OnCreateConsumer {
 `;
 export const onUpdateConsumer = `subscription OnUpdateConsumer {
   onUpdateConsumer {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -324,7 +324,7 @@ export const onUpdateConsumer = `subscription OnUpdateConsumer {
 `;
 export const onDeleteConsumer = `subscription OnDeleteConsumer {
   onDeleteConsumer {
-    id
+    user
     currentVendor {
       id
       semanticId
@@ -576,7 +576,7 @@ export const onCreateOrder = `subscription OnCreateOrder {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -663,7 +663,7 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -750,7 +750,7 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -956,7 +956,7 @@ export const onCreateRating = `subscription OnCreateRating {
   onCreateRating {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -996,7 +996,7 @@ export const onUpdateRating = `subscription OnUpdateRating {
   onUpdateRating {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -1036,7 +1036,7 @@ export const onDeleteRating = `subscription OnDeleteRating {
   onDeleteRating {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -1276,7 +1276,7 @@ export const onCreateVendor = `subscription OnCreateVendor {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }
@@ -1340,7 +1340,7 @@ export const onUpdateVendor = `subscription OnUpdateVendor {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }
@@ -1404,7 +1404,7 @@ export const onDeleteVendor = `subscription OnDeleteVendor {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }

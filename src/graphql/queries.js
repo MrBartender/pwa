@@ -136,9 +136,9 @@ export const listComponents = `query ListComponents(
   }
 }
 `;
-export const getConsumer = `query GetConsumer($id: ID!) {
-  getConsumer(id: $id) {
-    id
+export const getConsumer = `query GetConsumer($user: String!) {
+  getConsumer(user: $user) {
+    user
     currentVendor {
       id
       semanticId
@@ -179,13 +179,19 @@ export const getConsumer = `query GetConsumer($id: ID!) {
 }
 `;
 export const listConsumers = `query ListConsumers(
+  $user: String
   $filter: ModelConsumerFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listConsumers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listConsumers(
+    user: $user
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
     items {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -329,7 +335,7 @@ export const getOrder = `query GetOrder($id: ID!) {
     cost
     auth_code
     consumer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -421,7 +427,7 @@ export const listOrders = `query ListOrders(
       cost
       auth_code
       consumer {
-        id
+        user
       }
       recipe {
         id
@@ -546,7 +552,7 @@ export const getRating = `query GetRating($id: ID!) {
   getRating(id: $id) {
     id
     reviewer {
-      id
+      user
       currentVendor {
         id
         semanticId
@@ -591,7 +597,7 @@ export const listRatings = `query ListRatings(
     items {
       id
       reviewer {
-        id
+        user
       }
       recipe {
         id
@@ -723,7 +729,7 @@ export const getVendor = `query GetVendor($id: ID!) {
     }
     currentConsumers {
       items {
-        id
+        user
       }
       nextToken
     }
@@ -827,7 +833,7 @@ export const searchConsumers = `query SearchConsumers(
     nextToken: $nextToken
   ) {
     items {
-      id
+      user
       currentVendor {
         id
         semanticId
