@@ -1,0 +1,9 @@
+:local(.button) {
+  width: 15vw;
+  height: 15vw;
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  left: 5vw;
+  bottom: 10vw;
+}

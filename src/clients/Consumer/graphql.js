@@ -19,6 +19,17 @@ export const getConsumer = `query GetConsumer($user: String!) {
 export const createConsumer = `mutation CreateConsumer($input: CreateConsumerInput!) {
   createConsumer(input: $input) {
     user
+    currentVendor {
+      id
+      semanticId
+      name
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+    }
   }
 }
 `

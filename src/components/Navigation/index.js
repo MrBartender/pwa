@@ -1,51 +1,56 @@
 import React, { Component } from 'react'
-import { slide as Menu } from 'react-burger-menu'
-import { Nav, NavItem } from 'shards-react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+// import { slide as Menu } from 'react-burger-menu'
+// import { Nav, NavItem } from 'shards-react'
+import { Route, Switch, withRouter } from 'react-router-dom'
+import posed, { PoseGroup } from 'react-pose'
 
-import SignOut from '../../core/components/SignOut'
-import './style.css'
+// import SignOut from '../../core/components/SignOut'
+import Background from './components/Background'
+import Button from './components/Button'
+import styles from './style.module.css'
+
+const RoutesContainer = posed.div({
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+})
 
 class Navigation extends Component {
   render() {
-    const { user, routes } = this.props
+    const { routes, location } = this.props
 
     return (
-      <Router>
-        <div>
-          <Menu disableAutoFocus className="sidebarNav">
-            <h3 className="sidebarTitle">{user.name}</h3>
-            <Nav vertical className="sidebarContainer">
-              {routes.map((route, index) => {
-                return (
-                  <NavItem key={index} className="navListItem">
-                    <Link className="sidebarLink" to={route.path}>
-                      <img src={route.icon} alt={route.name} />
-                    </Link>
-                  </NavItem>
-                )
-              })}
-            </Nav>
-            <SignOut />
-          </Menu>
+      <div>
+        <div className={styles.navigation}>
+          <Background />
 
-          {/* Read main view */}
-          <main className="page">
-            {routes.map((route, index) => {
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.main}
-                />
-              )
+          <PoseGroup>
+            {routes.map((route, key) => {
+              return <Button key={key} route={route} />
             })}
-          </main>
+          </PoseGroup>
         </div>
-      </Router>
+
+        <main>
+          <PoseGroup>
+            <RoutesContainer key={location.key}>
+              <Switch location={location}>
+                {routes.map((route, index) => {
+                  return (
+                    <Route
+                      key={index}
+                      path={route.path}
+                      exact={route.exact}
+                      component={route.component}
+                    />
+                  )
+                })}
+              </Switch>
+            </RoutesContainer>
+          </PoseGroup>
+        </main>
+      </div>
     )
   }
 }
 
-export default Navigation
+export default withRouter(Navigation)

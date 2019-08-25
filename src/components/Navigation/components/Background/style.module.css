@@ -1,0 +1,11 @@
+:local(.background) {
+  bottom: 0;
+  position: fixed;
+  left: -87.5vw;
+  width: 200vw;
+  transition: left 0.3s ease-in-out;
+}
+
+:local(.backgroundImg) {
+  width: 100%;
+}

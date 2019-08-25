@@ -9,10 +9,16 @@ import ProfileSelect from './pages/ProfileSelect'
 import Vendor from '../clients/Vendor'
 import Consumer from '../clients/Consumer'
 
+// Redux Store
+import { Provider } from 'react-redux'
+import configureStore from './store'
+
 // App-wide styles
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'shards-ui/dist/css/shards.min.css'
 import './style.css'
+
+const store = configureStore()
 
 class Core extends Component {
   state = { user: null, profile: null }
@@ -55,12 +61,20 @@ class Core extends Component {
 
     // Launch Vendor Client
     if (profile === 'vendor') {
-      return <Vendor user={user} />
+      return (
+        <Provider store={store}>
+          <Vendor user={user} />
+        </Provider>
+      )
     }
 
     // Launch Consumer Client
     if (profile === 'consumer') {
-      return <Consumer user={user} />
+      return (
+        <Provider store={store}>
+          <Consumer user={user} />
+        </Provider>
+      )
     }
 
     return null
