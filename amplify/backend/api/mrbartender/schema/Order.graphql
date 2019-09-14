@@ -10,7 +10,6 @@ type Order @model {
   consumer: Consumer! @connection(name: "ConsumerOrders")
   recipe: Recipe! @connection(name: "OrderRecipe")
   device: Device! @connection(name: "DeviceOrders")
-  vendor: Vendor! @connection(name: "VendorOrders")
   timestamps: Timestamps!
 }
 

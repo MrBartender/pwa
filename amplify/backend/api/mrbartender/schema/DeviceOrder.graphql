@@ -1,0 +1,34 @@
+#####
+# Order for a new device created by a vendor
+#
+type DeviceOrder @model {
+  id: ID!
+  cognitoIdentityId: String!
+  status: DeviceOrderStatus!
+  price: Int!
+  device: Device! @connection(name: "DeviceOrders")
+  vendor: Vendor! @connection(name: "VendorDeviceOrders")
+  timestamps: DeviceTimestamps!
+}
+
+#####
+# Status of a placed device order
+#
+enum DeviceOrderStatus {
+  MANUFACTURING
+  DELIVERING
+  DELIVERED
+  SUSPENDED
+  CANCELLED
+  REFUND_REQUESTED
+  REFUNDED
+}
+
+#####
+# Timestamps for a device order
+#
+type DeviceTimestamps {
+  ordered: AWSTimestamp
+  paid: AWSTimestamp
+  poured: AWSTimestamp
+}

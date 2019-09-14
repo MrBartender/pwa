@@ -1,14 +1,15 @@
 #####
 # Vendor profile data
 #
-type Vendor @model @searchable {
+type Vendor @model @searchable @key(name: "ByUser", fields: ["user"]) {
   id: ID!
-  semanticId: String!
+  user: String!
+  semanticId: String
   name: String!
   website: AWSURL
   profilePic: ProfilePic
-  currentConsumers: [Consumer!]! @connection(name: "VendorConsumers")
+  currentConsumers: [Consumer!] @connection(name: "VendorConsumers")
   collections: [Collection!] @connection(name: "VendorCollections")
   devices: [Device!]! @connection(name: "VendorDevices")
-  orders: [Order!]! @connection(name: "VendorOrders")
+  orders: [DeviceOrder!]! @connection(name: "VendorDeviceOrders")
 }

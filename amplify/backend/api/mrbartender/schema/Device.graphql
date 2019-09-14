@@ -1,12 +1,11 @@
 #####
 # Automated pouring machine registered with a vendor
 #
-type Device @model @searchable
-{
+type Device @model @searchable {
   id: ID!
   status: DeviceStatus!
   name: String!
-  semantic_id: String!
+  clientId: String!
   pourCode: String
   vendor: Vendor! @connection(name: "VendorDevices")
   calibration: Calibration!
@@ -17,8 +16,7 @@ type Device @model @searchable
 #####
 # Public status of each device
 #
-enum DeviceStatus
-{
+enum DeviceStatus {
   ACTIVE
   INACTIVE
   MAINTANCE
