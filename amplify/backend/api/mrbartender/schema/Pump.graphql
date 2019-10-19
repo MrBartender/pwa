@@ -1,10 +1,9 @@
 #####
 # Pump Object on a device
 #
-type Pump @model
-{
+type Pump @model {
   id: ID!
-  semantic_id: Int!
+  semanticId: Int!
   status: PumpStatus!
   product: Product @connection
   costByVolume: Int
@@ -15,8 +14,7 @@ type Pump @model
 #####
 # Status of a pump
 #
-enum PumpStatus
-{
+enum PumpStatus {
   ACTIVE
   INACTIVE
 }
@@ -24,15 +22,13 @@ enum PumpStatus
 #####
 # Calibration equation for a type of pumps
 #
-type Calibration
-{
+type Calibration {
   formula: String
 }
 
 #####
 # Calibration weights for a single pump
 #
-type Weights
-{
+type Weights {
   weights: [Float!]
 }

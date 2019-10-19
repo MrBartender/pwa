@@ -19,6 +19,6 @@ type Device @model @searchable {
 enum DeviceStatus {
   ACTIVE
   INACTIVE
-  MAINTANCE
+  MAINTENANCE
   ERROR
 }

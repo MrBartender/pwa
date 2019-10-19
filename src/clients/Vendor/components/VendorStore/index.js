@@ -4,13 +4,17 @@ import React, { Component } from 'react'
 import { API } from 'aws-amplify'
 import { createVendor, updateHost } from './graphql'
 
+// Redux
+import { connect } from 'react-redux'
+import { vendorActions } from '../../../../core/store/vendor'
+
 // Components
 import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from 'mdbreact'
-import SignOut from '../../core/components/SignOut'
+import SignOut from '../../../../core/components/SignOut'
 
 class VendorStore extends Component {
-  async createVendor(save) {
-    const { user } = this.props
+  async createVendor() {
+    const { user, setVendor } = this.props
     const userId = user.id.split(':')[1]
 
     // Get or create Vendor object
@@ -39,7 +43,7 @@ class VendorStore extends Component {
           authMode: 'OPENID_CONNECT',
         })
 
-        save(newVendor)
+        setVendor(newVendor)
       })
       .catch(error => {
         console.error('Error creating vendor:', error)
@@ -47,8 +51,6 @@ class VendorStore extends Component {
   }
 
   render() {
-    const { setVendor } = this.props
-
     return (
       <MDBContainer fluid className="text-center my-5">
         <h2 className="h1-responsive font-weight-bold text-center my-5">
@@ -96,7 +98,7 @@ class VendorStore extends Component {
               rounded
               gradient="peach"
               className="mb-3 mt-3"
-              onClick={() => this.createVendor(setVendor)}
+              onClick={() => this.createVendor()}
             >
               Get Started
             </MDBBtn>
@@ -108,4 +110,9 @@ class VendorStore extends Component {
   }
 }
 
-export default VendorStore
+export default connect(
+  null,
+  dispatch => ({
+    setVendor: vendor => dispatch(vendorActions.setVendor(vendor)),
+  })
+)(VendorStore)

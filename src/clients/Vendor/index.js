@@ -9,7 +9,10 @@ import { connect } from 'react-redux'
 import { vendorActions } from '../../core/store/vendor'
 
 // Components
-import VendorStore from '../../components/VendorStore'
+import VendorStore from './components/VendorStore'
+import Introduction from './components/Introduction'
+import Devices from './components/Devices'
+import { Container } from 'shards-react'
 
 // Styles
 import '@fortawesome/fontawesome-free/css/all.min.css'
@@ -55,23 +58,20 @@ class Vendor extends Component {
   }
 
   render() {
-    const { vendor, user, setVendor } = this.props
+    const { vendor, user } = this.props
 
     // If no vendor attached to this host, go make one
-    if (!vendor) {
-      return (
-        <VendorStore
-          user={user}
-          setVendor={newVendor => {
-            setVendor(newVendor)
-            this.setState({ vendor: newVendor })
-          }}
-        />
-      )
+    if (!vendor || !Object.keys(vendor).length) {
+      return <VendorStore user={user} />
     }
 
     // Vendor attached, welcome to the Dashboard
-    return <h1>Welcome, Vendor.</h1>
+    return (
+      <Container className="linear-cards">
+        <Introduction user={user} />
+        <Devices />
+      </Container>
+    )
   }
 }
 

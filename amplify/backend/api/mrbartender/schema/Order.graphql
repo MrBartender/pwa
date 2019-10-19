@@ -6,7 +6,7 @@ type Order @model {
   status: OrderStatus!
   price: Int!
   cost: Int!
-  auth_code: Int!
+  authCode: Int!
   consumer: Consumer! @connection(name: "ConsumerOrders")
   recipe: Recipe! @connection(name: "OrderRecipe")
   device: Device! @connection(name: "DeviceOrders")
