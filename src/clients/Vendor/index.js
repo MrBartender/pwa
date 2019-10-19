@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
+
+// API
 import { API } from 'aws-amplify'
 import { getHost, createHost } from './graphql'
+
+// Redux
 import { connect } from 'react-redux'
 import { vendorActions } from '../../core/store/vendor'
+
+// Components
 import VendorStore from '../../components/VendorStore'
 
 // Styles
@@ -11,8 +17,6 @@ import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
 class Vendor extends Component {
-  state = { vendor: null }
-
   componentDidMount() {
     const { vendor, user, setVendor } = this.props
 
@@ -42,24 +46,28 @@ class Vendor extends Component {
             }).data.createHost
           }
 
-          console.log(host.vendor)
           setVendor(host.vendor)
-          this.setState({ vendor: host.vendor })
         })
         .catch(error => {
-          console.error('Error getting host:', error)
+          console.error('Error getting host/vendor:', error)
         })
-    } else {
-      this.setState({ vendor })
     }
   }
 
   render() {
-    const { vendor } = this.state
+    const { vendor, user, setVendor } = this.props
 
     // If no vendor attached to this host, go make one
     if (!vendor) {
-      return <VendorStore />
+      return (
+        <VendorStore
+          user={user}
+          setVendor={newVendor => {
+            setVendor(newVendor)
+            this.setState({ vendor: newVendor })
+          }}
+        />
+      )
     }
 
     // Vendor attached, welcome to the Dashboard

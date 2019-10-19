@@ -66,7 +66,7 @@ class SignIn extends Component {
         console.log(credentials)
       })
       .catch(error => {
-        console.error(error)
+        console.error('Error signing in via Google:', error)
       })
   }
 
