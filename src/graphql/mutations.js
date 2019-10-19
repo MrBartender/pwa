@@ -1,4 +1,4 @@
-// eslint-disable
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const createCollection = `mutation CreateCollection($input: CreateCollectionInput!) {
@@ -18,6 +18,7 @@ export const createCollection = `mutation CreateCollection($input: CreateCollect
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -54,6 +55,7 @@ export const updateCollection = `mutation UpdateCollection($input: UpdateCollect
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -90,6 +92,7 @@ export const deleteCollection = `mutation DeleteCollection($input: DeleteCollect
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -243,6 +246,7 @@ export const createConsumer = `mutation CreateConsumer($input: CreateConsumerInp
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -285,6 +289,7 @@ export const updateConsumer = `mutation UpdateConsumer($input: UpdateConsumerInp
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -327,6 +332,7 @@ export const deleteConsumer = `mutation DeleteConsumer($input: DeleteConsumerInp
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -369,10 +375,11 @@ export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -420,10 +427,11 @@ export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -471,10 +479,11 @@ export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -513,6 +522,174 @@ export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
         auth_code
       }
       nextToken
+    }
+  }
+}
+`;
+export const createDeviceOrder = `mutation CreateDeviceOrder($input: CreateDeviceOrderInput!) {
+  createDeviceOrder(input: $input) {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
+    }
+  }
+}
+`;
+export const updateDeviceOrder = `mutation UpdateDeviceOrder($input: UpdateDeviceOrderInput!) {
+  updateDeviceOrder(input: $input) {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
+    }
+  }
+}
+`;
+export const deleteDeviceOrder = `mutation DeleteDeviceOrder($input: DeleteDeviceOrderInput!) {
+  deleteDeviceOrder(input: $input) {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
@@ -579,6 +756,7 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -611,10 +789,11 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -623,24 +802,6 @@ export const createOrder = `mutation CreateOrder($input: CreateOrderInput!) {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -666,6 +827,7 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -698,10 +860,11 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -710,24 +873,6 @@ export const updateOrder = `mutation UpdateOrder($input: UpdateOrderInput!) {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -753,6 +898,7 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -785,10 +931,11 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -797,24 +944,6 @@ export const deleteOrder = `mutation DeleteOrder($input: DeleteOrderInput!) {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -959,6 +1088,7 @@ export const createRating = `mutation CreateRating($input: CreateRatingInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -999,6 +1129,7 @@ export const updateRating = `mutation UpdateRating($input: UpdateRatingInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -1039,6 +1170,7 @@ export const deleteRating = `mutation DeleteRating($input: DeleteRatingInput!) {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -1249,6 +1381,7 @@ export const deleteRecipe = `mutation DeleteRecipe($input: DeleteRecipeInput!) {
 export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
   createVendor(input: $input) {
     id
+    user
     semanticId
     name
     website
@@ -1292,7 +1425,7 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1300,10 +1433,9 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }
@@ -1313,6 +1445,7 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
 export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
   updateVendor(input: $input) {
     id
+    user
     semanticId
     name
     website
@@ -1356,7 +1489,7 @@ export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1364,10 +1497,9 @@ export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }
@@ -1377,6 +1509,7 @@ export const updateVendor = `mutation UpdateVendor($input: UpdateVendorInput!) {
 export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
   deleteVendor(input: $input) {
     id
+    user
     semanticId
     name
     website
@@ -1420,7 +1553,7 @@ export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1428,10 +1561,9 @@ export const deleteVendor = `mutation DeleteVendor($input: DeleteVendorInput!) {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }

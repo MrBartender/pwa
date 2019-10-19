@@ -1,7 +1,7 @@
 #####
 # Consumer profile data
 #
-type Consumer @model @searchable @key(fields: ["user"]) {
+type Consumer @model @key(fields: ["user"]) {
   user: String!
   # favoriteCollections: [CollectionFavorites!]! @connection(name: "CollectionsFavorited")
   # favoriteDrinks: [Recipe!]! @connection

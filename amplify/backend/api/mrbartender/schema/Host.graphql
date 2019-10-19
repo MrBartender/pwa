@@ -1,7 +1,11 @@
 #####
 # Host profile data
+# --------------------
+# A Host represents a user that is capable of managing
+# and maintaining devices. A user can be either a consumer or
+# a Host, and an unassigned Host can create a Vendor.
 #
 type Host @model @key(fields: ["user"]) {
   user: String!
-  vendor: Vendor! @connection(name: "VendorHosts")
+  vendor: Vendor @connection(name: "VendorHosts")
 }

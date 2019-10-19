@@ -1,4 +1,4 @@
-// eslint-disable
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCollection = `subscription OnCreateCollection {
@@ -18,6 +18,7 @@ export const onCreateCollection = `subscription OnCreateCollection {
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -54,6 +55,7 @@ export const onUpdateCollection = `subscription OnUpdateCollection {
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -90,6 +92,7 @@ export const onDeleteCollection = `subscription OnDeleteCollection {
     }
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -243,6 +246,7 @@ export const onCreateConsumer = `subscription OnCreateConsumer {
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -285,6 +289,7 @@ export const onUpdateConsumer = `subscription OnUpdateConsumer {
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -327,6 +332,7 @@ export const onDeleteConsumer = `subscription OnDeleteConsumer {
     user
     currentVendor {
       id
+      user
       semanticId
       name
       website
@@ -369,10 +375,11 @@ export const onCreateDevice = `subscription OnCreateDevice {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -420,10 +427,11 @@ export const onUpdateDevice = `subscription OnUpdateDevice {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -471,10 +479,11 @@ export const onDeleteDevice = `subscription OnDeleteDevice {
     id
     status
     name
-    semantic_id
+    clientId
     pourCode
     vendor {
       id
+      user
       semanticId
       name
       website
@@ -513,6 +522,174 @@ export const onDeleteDevice = `subscription OnDeleteDevice {
         auth_code
       }
       nextToken
+    }
+  }
+}
+`;
+export const onCreateDeviceOrder = `subscription OnCreateDeviceOrder {
+  onCreateDeviceOrder {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
+    }
+  }
+}
+`;
+export const onUpdateDeviceOrder = `subscription OnUpdateDeviceOrder {
+  onUpdateDeviceOrder {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
+    }
+  }
+}
+`;
+export const onDeleteDeviceOrder = `subscription OnDeleteDeviceOrder {
+  onDeleteDeviceOrder {
+    id
+    cognitoIdentityId
+    status
+    price
+    device {
+      id
+      status
+      name
+      clientId
+      pourCode
+      vendor {
+        id
+        user
+        semanticId
+        name
+        website
+      }
+      calibration {
+        formula
+      }
+      pumps {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    vendor {
+      id
+      user
+      semanticId
+      name
+      website
+      currentConsumers {
+        nextToken
+      }
+      collections {
+        nextToken
+      }
+      devices {
+        nextToken
+      }
+      orders {
+        nextToken
+      }
+    }
+    timestamps {
+      ordered
+      paid
+      poured
     }
   }
 }
@@ -579,6 +756,7 @@ export const onCreateOrder = `subscription OnCreateOrder {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -611,10 +789,11 @@ export const onCreateOrder = `subscription OnCreateOrder {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -623,24 +802,6 @@ export const onCreateOrder = `subscription OnCreateOrder {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -666,6 +827,7 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -698,10 +860,11 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -710,24 +873,6 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -753,6 +898,7 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -785,10 +931,11 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
       id
       status
       name
-      semantic_id
+      clientId
       pourCode
       vendor {
         id
+        user
         semanticId
         name
         website
@@ -797,24 +944,6 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
         formula
       }
       pumps {
-        nextToken
-      }
-      orders {
-        nextToken
-      }
-    }
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        nextToken
-      }
-      collections {
-        nextToken
-      }
-      devices {
         nextToken
       }
       orders {
@@ -959,6 +1088,7 @@ export const onCreateRating = `subscription OnCreateRating {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -999,6 +1129,7 @@ export const onUpdateRating = `subscription OnUpdateRating {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -1039,6 +1170,7 @@ export const onDeleteRating = `subscription OnDeleteRating {
       user
       currentVendor {
         id
+        user
         semanticId
         name
         website
@@ -1249,6 +1381,7 @@ export const onDeleteRecipe = `subscription OnDeleteRecipe {
 export const onCreateVendor = `subscription OnCreateVendor {
   onCreateVendor {
     id
+    user
     semanticId
     name
     website
@@ -1292,7 +1425,7 @@ export const onCreateVendor = `subscription OnCreateVendor {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1300,10 +1433,9 @@ export const onCreateVendor = `subscription OnCreateVendor {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }
@@ -1313,6 +1445,7 @@ export const onCreateVendor = `subscription OnCreateVendor {
 export const onUpdateVendor = `subscription OnUpdateVendor {
   onUpdateVendor {
     id
+    user
     semanticId
     name
     website
@@ -1356,7 +1489,7 @@ export const onUpdateVendor = `subscription OnUpdateVendor {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1364,10 +1497,9 @@ export const onUpdateVendor = `subscription OnUpdateVendor {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }
@@ -1377,6 +1509,7 @@ export const onUpdateVendor = `subscription OnUpdateVendor {
 export const onDeleteVendor = `subscription OnDeleteVendor {
   onDeleteVendor {
     id
+    user
     semanticId
     name
     website
@@ -1420,7 +1553,7 @@ export const onDeleteVendor = `subscription OnDeleteVendor {
         id
         status
         name
-        semantic_id
+        clientId
         pourCode
       }
       nextToken
@@ -1428,10 +1561,9 @@ export const onDeleteVendor = `subscription OnDeleteVendor {
     orders {
       items {
         id
+        cognitoIdentityId
         status
         price
-        cost
-        auth_code
       }
       nextToken
     }

@@ -1,5 +1,10 @@
 #####
-# Vendor Object data
+# Vendor Object
+# ----------------
+# A Vendor represents a company or establishment
+# that owns devices. Consumers can join a vendor in order
+# to order from their devices. A company can have a Vendor
+# object with many Hosts to manage the devices at events.
 #
 type Vendor @model @searchable {
   id: ID!

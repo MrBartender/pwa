@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { API } from 'aws-amplify'
-import { getVendor, createVendor } from './graphql'
+import { getHost, createHost } from './graphql'
 import { connect } from 'react-redux'
 import { vendorActions } from '../../core/store/vendor'
-
-import SignOut from '../../core/components/SignOut'
-
-import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from 'mdbreact'
+import VendorStore from '../../components/VendorStore'
 
 // Styles
 import '@fortawesome/fontawesome-free/css/all.min.css'
@@ -14,100 +11,59 @@ import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
 class Vendor extends Component {
+  state = { vendor: null }
+
   componentDidMount() {
     const { vendor, user, setVendor } = this.props
 
-    // Retrieve or Create Consumer object and sync with it
+    // Retrieve Vendor object inside this host and sync with it
     if (!vendor || !Object.keys(vendor).length) {
       const userId = user.id.split(':')[1]
 
+      // Get host associated with this user
       API.graphql({
-        query: getVendor,
+        query: getHost,
         variables: {
           user: userId,
         },
         authMode: 'OPENID_CONNECT',
       })
-        .then(getResult => {
-          const vendor = getResult.data.getVendor
+        .then(async getResult => {
+          let host = getResult.data.getHost
 
-          if (!vendor) {
-            // API.graphql({
-            //   query: createVendor,
-            //   variables: {
-            //     input: { user: userId },
-            //   },
-            //   authMode: 'OPENID_CONNECT',
-            // })
-            //   .then(createResult => {
-            //     setVendor(createResult.data.createVendor)
-            //   })
-            //   .catch(error => {
-            //     console.error('Error creating vendor:', error)
-            //   })
-            console.log(vendor)
-          } else {
-            setVendor(vendor)
+          // If no host, create one
+          if (!host) {
+            host = await API.graphql({
+              query: createHost,
+              variables: {
+                input: { user: userId },
+              },
+              authMode: 'OPENID_CONNECT',
+            }).data.createHost
           }
+
+          console.log(host.vendor)
+          setVendor(host.vendor)
+          this.setState({ vendor: host.vendor })
         })
         .catch(error => {
-          console.error('Error getting vendor:', error)
+          console.error('Error getting host:', error)
         })
+    } else {
+      this.setState({ vendor })
     }
   }
 
   render() {
-    return (
-      <MDBContainer fluid className="text-center my-5">
-        <h2 className="h1-responsive font-weight-bold text-center my-5">
-          Become a Vendor
-        </h2>
+    const { vendor } = this.state
 
-        <MDBCard pricing>
-          <div className="peach-gradient white-text rounded-top">
-            <h4
-              className="option"
-              style={{
-                padding: '2.5rem',
-                marginBottom: 0,
-                fontWeight: 500,
-              }}
-            >
-              Personal
-            </h4>
-          </div>
-          <MDBCardBody className="striped orange-striped white-text card-background px-5">
-            <h2 className="my-4 pb-3 h1">$899</h2>
-            <ul>
-              <li>
-                <p>
-                  <strong>1</strong> device
-                </p>
-              </li>
-              <li>
-                <p>
-                  <strong>20+</strong> guests
-                </p>
-              </li>
-              <li>
-                <p>
-                  <strong>50+</strong> drink recipes
-                </p>
-              </li>
-              <li>
-                <p>
-                  <strong>1</strong> incredible event
-                </p>
-              </li>
-            </ul>
-            <MDBBtn rounded gradient="peach" className="mb-3 mt-3">
-              Get Started
-            </MDBBtn>
-          </MDBCardBody>
-        </MDBCard>
-        <SignOut />
-      </MDBContainer>
-    )
+    // If no vendor attached to this host, go make one
+    if (!vendor) {
+      return <VendorStore />
+    }
+
+    // Vendor attached, welcome to the Dashboard
+    return <h1>Welcome, Vendor.</h1>
   }
 }
 

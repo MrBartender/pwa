@@ -1,35 +1,20 @@
-export const getVendor = `query GetVendor($user: String!) {
-  getVendor(user: $user) {
+export const getHost = `query GetHost($user: String!) {
+  getHost(user: $user) {
     user
-    currentVendor {
+    vendor {
       id
       semanticId
-      name
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
     }
   }
 }
 `
 
-export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
-  createVendor(input: $input) {
+export const createHost = `mutation CreateHost($input: CreateHostInput!) {
+  createHost(input: $input) {
     user
-    currentVendor {
+    vendor {
       id
       semanticId
-      name
-      collections {
-        nextToken
-      }
-      devices {
-        nextToken
-      }
     }
   }
-}
-`
+}`
