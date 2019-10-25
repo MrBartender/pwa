@@ -7,5 +7,5 @@
 #
 type Host @model @key(fields: ["user"]) {
   user: String! # cognitoId of user account; PK
-  vendorsOwned: [Vendor!]! @connection(name: "VendorOwner") # list of vendors this user created
+  # vendorsOwned: [Vendor!]! @connection(name: "VendorOwner") # list of vendors this user created
 }
