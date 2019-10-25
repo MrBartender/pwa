@@ -39,12 +39,8 @@ export const getHost = `query GetHost($user: String!) {
           }
           nextToken
         }
-        hosts {
-          items {
-            user
-          }
-        }
       }
+      nextToken
     }
   }
 }
@@ -91,12 +87,8 @@ export const createHost = `mutation CreateHost($input: CreateHostInput!) {
           }
           nextToken
         }
-        hosts {
-          items {
-            user
-          }
-        }
       }
+      nextToken
     }
   }
 }`

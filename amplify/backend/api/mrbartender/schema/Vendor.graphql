@@ -11,7 +11,7 @@ type Vendor @model @searchable {
   id: ID!
   semanticId: String! # 4 character code (shorthand to find Vendor)
   name: String! # Name of company or establishment
-  owner: Host! @connection(name: "VendorOwner", keyField: "user") # Host account that created this Vendor
+  owner: Host! @connection(name: "VendorOwner") # Host account that created this Vendor
   website: AWSURL # Company URL
   profilePic: ProfilePic # collection of images for branding
   currentConsumers: [Consumer!] @connection(name: "VendorConsumers") # Consumers in the establishment rn
