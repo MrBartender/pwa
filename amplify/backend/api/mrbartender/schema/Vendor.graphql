@@ -8,8 +8,9 @@
 #
 type Vendor @model @searchable {
   id: ID!
-  semanticId: String
+  semanticId: String!
   name: String!
+  owner: Host! @connection(name: "VendorOwner", keyField: "user")
   website: AWSURL
   profilePic: ProfilePic
   currentConsumers: [Consumer!] @connection(name: "VendorConsumers")

@@ -7,7 +7,7 @@ class ProfileSelect extends Component {
       <div>
         <h1 style={{ color: 'white' }}>Choose a Profile</h1>
         <div>
-          <button onClick={() => selectProfile('vendor')}>Vendor</button>
+          <button onClick={() => selectProfile('host')}>Host</button>
           <button onClick={() => selectProfile('consumer')}>Consumer</button>
         </div>
       </div>

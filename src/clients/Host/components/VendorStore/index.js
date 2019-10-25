@@ -13,17 +13,17 @@ import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from 'mdbreact'
 import SignOut from '../../../../core/components/SignOut'
 
 class VendorStore extends Component {
-  async createVendor() {
-    const { user, setVendor } = this.props
-    const userId = user.id.split(':')[1]
+  async createVendor(name, semanticId) {
+    const { host, setVendor } = this.props
 
     // Get or create Vendor object
     API.graphql({
       query: createVendor,
       variables: {
         input: {
-          name: 'First Vendor',
-          semanticId: 'XKCD',
+          name,
+          semanticId,
+          owner: host.user,
         },
       },
       authMode: 'OPENID_CONNECT',
@@ -32,16 +32,17 @@ class VendorStore extends Component {
         const newVendor = createResult.data.createVendor
 
         // Link new vendor to this host
-        await API.graphql({
-          query: updateHost,
-          variables: {
-            input: {
-              user: userId,
-              hostVendorId: newVendor.id,
-            },
-          },
-          authMode: 'OPENID_CONNECT',
-        })
+        // await API.graphql({
+        //   query: updateHost,
+        //   variables: {
+        //     input: {
+        //       user: userId,
+        //       hostVendorId: newVendor.id,
+        //     },
+        //   },
+        //   authMode: 'OPENID_CONNECT',
+        // })
+        console.log(newVendor)
 
         setVendor(newVendor)
       })
@@ -98,10 +99,11 @@ class VendorStore extends Component {
               rounded
               gradient="peach"
               className="mb-3 mt-3"
-              onClick={() => this.createVendor()}
+              onClick={() => this.createVendor('First Vendor', 'XKCD')}
             >
               Get Started
             </MDBBtn>
+            {/* <Button onClick={this.toggle}>Small Modal!</Button> */}
           </MDBCardBody>
         </MDBCard>
         <SignOut />
@@ -111,7 +113,9 @@ class VendorStore extends Component {
 }
 
 export default connect(
-  null,
+  state => ({
+    host: state.host,
+  }),
   dispatch => ({
     setVendor: vendor => dispatch(vendorActions.setVendor(vendor)),
   })

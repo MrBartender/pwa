@@ -6,7 +6,7 @@ import { Auth, Hub } from 'aws-amplify'
 // Pages and Clients that could get rendered
 import SignIn from './pages/SignIn'
 import ProfileSelect from './pages/ProfileSelect'
-import Vendor from '../clients/Vendor'
+import Host from '../clients/Host'
 import Consumer from '../clients/Consumer'
 
 // Redux Store
@@ -59,11 +59,11 @@ class Core extends Component {
       )
     }
 
-    // Launch Vendor Client
-    if (profile === 'vendor') {
+    // Launch Host Client
+    if (profile === 'host') {
       return (
         <Provider store={store}>
-          <Vendor user={user} />
+          <Host user={user} />
         </Provider>
       )
     }

@@ -8,4 +8,5 @@
 type Host @model @key(fields: ["user"]) {
   user: String!
   vendor: Vendor @connection(name: "VendorHosts")
+  vendorsOwned: [Vendor!]! @connection(name: "VendorOwner")
 }

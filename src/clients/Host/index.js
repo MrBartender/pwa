@@ -6,9 +6,10 @@ import { getHost, createHost } from './graphql'
 
 // Redux
 import { connect } from 'react-redux'
-import { vendorActions } from '../../core/store/vendor'
+import { hostActions } from '../../core/store/host'
 
 // Components
+import LoadingPage from '../../core/pages/LoadingPage'
 import VendorStore from './components/VendorStore'
 import Introduction from './components/Introduction'
 import Devices from './components/Devices'
@@ -19,12 +20,12 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'bootstrap-css-only/css/bootstrap.min.css'
 import 'mdbreact/dist/css/mdb.css'
 
-class Vendor extends Component {
+class Host extends Component {
   componentDidMount() {
-    const { vendor, user, setVendor } = this.props
+    const { host, user, setHost } = this.props
 
-    // Retrieve Vendor object inside this host and sync with it
-    if (!vendor || !Object.keys(vendor).length) {
+    // Retrieve host and sync with it
+    if (!host || !Object.keys(host).length) {
       const userId = user.id.split(':')[1]
 
       // Get host associated with this user
@@ -49,23 +50,34 @@ class Vendor extends Component {
             }).data.createHost
           }
 
-          setVendor(host.vendor)
+          setHost(host)
         })
         .catch(error => {
-          console.error('Error getting host/vendor:', error)
+          console.error('Error getting host:', error)
         })
     }
   }
 
   render() {
-    const { vendor, user } = this.props
+    const { host, user } = this.props
 
-    // If no vendor attached to this host, go make one
-    if (!vendor || !Object.keys(vendor).length) {
-      return <VendorStore user={user} />
+    // If no host, wait for componentDidMount to create one
+    if (!host) {
+      return <LoadingPage />
     }
 
-    // Vendor attached, welcome to the Dashboard
+    // If host owns no vendors, go to the vendor store to get one
+    if (!host.vendorsOwned || host.vendorsOwned.length === 0) {
+      return <VendorStore />
+    }
+
+    // If host has not selected a vendor, select one
+    if (!host.vendor || !Object.keys(host.vendor).length) {
+      console.log('No vendor selected')
+      return <LoadingPage />
+    }
+
+    // Vendor selected, welcome to the Dashboard
     return (
       <Container className="linear-cards">
         <Introduction user={user} />
@@ -77,9 +89,9 @@ class Vendor extends Component {
 
 export default connect(
   state => ({
-    vendor: state.vendor,
+    host: state.host,
   }),
   dispatch => ({
-    setVendor: vendor => dispatch(vendorActions.setVendor(vendor)),
+    setHost: host => dispatch(hostActions.setHost(host)),
   })
-)(Vendor)
+)(Host)

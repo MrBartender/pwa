@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { vendorActions } from '../../../../core/store/vendor'
+import LoadingPage from '../../../../core/pages/LoadingPage'
 import {
   Row,
   Col,
@@ -45,6 +46,10 @@ class Devices extends Component {
 
   render() {
     const { vendor } = this.props
+
+    if (!vendor || !Object.keys(vendor).length) {
+      return <LoadingPage />
+    }
 
     return (
       <Row>
