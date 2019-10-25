@@ -36,11 +36,6 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
       }
       nextToken
     }
-    hosts {
-      items {
-        user
-      }
-    }
   }
 }
 `
@@ -48,49 +43,6 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
 export const updateHost = `mutation UpdateHost($input: UpdateHostInput!) {
   updateHost(input: $input) {
     user
-    vendor {
-      id
-      semanticId
-      name
-      website
-      currentConsumers {
-        items {
-          user
-        }
-        nextToken
-      }
-      collections {
-        items {
-          id
-          name
-        }
-        nextToken
-      }
-      devices {
-        items {
-          id
-          status
-          name
-          clientId
-          pourCode
-        }
-        nextToken
-      }
-      orders {
-        items {
-          id
-          cognitoIdentityId
-          status
-          price
-        }
-        nextToken
-      }
-      hosts {
-        items {
-          user
-        }
-      }
-    }
   }
 }
 `

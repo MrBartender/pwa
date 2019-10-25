@@ -5,17 +5,17 @@
 # that owns devices. Consumers can join a vendor in order
 # to order from their devices. A company can have a Vendor
 # object with many Hosts to manage the devices at events.
+# A Host must create a Vendor account
 #
 type Vendor @model @searchable {
   id: ID!
-  semanticId: String!
-  name: String!
-  owner: Host! @connection(name: "VendorOwner", keyField: "user")
-  website: AWSURL
-  profilePic: ProfilePic
-  currentConsumers: [Consumer!] @connection(name: "VendorConsumers")
-  collections: [Collection!] @connection(name: "VendorCollections")
-  devices: [Device!]! @connection(name: "VendorDevices")
-  orders: [DeviceOrder!]! @connection(name: "VendorDeviceOrders")
-  hosts: [Host!]! @connection(name: "VendorHosts")
+  semanticId: String! # 4 character code (shorthand to find Vendor)
+  name: String! # Name of company or establishment
+  owner: Host! @connection(name: "VendorOwner", keyField: "user") # Host account that created this Vendor
+  website: AWSURL # Company URL
+  profilePic: ProfilePic # collection of images for branding
+  currentConsumers: [Consumer!] @connection(name: "VendorConsumers") # Consumers in the establishment rn
+  collections: [Collection!] @connection(name: "VendorCollections") # the "menu" of drinks available
+  devices: [Device!]! @connection(name: "VendorDevices") # devices registered under this Vendor
+  orders: [DeviceOrder!]! @connection(name: "VendorDeviceOrders") # Log of device purchase orders, only owner can buy new devices
 }

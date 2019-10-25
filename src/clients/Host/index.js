@@ -12,7 +12,7 @@ import { hostActions } from '../../core/store/host'
 import LoadingPage from '../../core/pages/LoadingPage'
 import VendorStore from './components/VendorStore'
 import Introduction from './components/Introduction'
-import Devices from './components/Devices'
+// import Devices from './components/Devices'
 import { Container } from 'shards-react'
 
 // Styles
@@ -72,16 +72,16 @@ class Host extends Component {
     }
 
     // If host has not selected a vendor, select one
-    if (!host.vendor || !Object.keys(host.vendor).length) {
-      console.log('No vendor selected')
-      return <LoadingPage />
-    }
+    // if (!host.vendor || !Object.keys(host.vendor).length) {
+    //   console.log('No vendor selected')
+    //   return <LoadingPage />
+    // }
 
     // Vendor selected, welcome to the Dashboard
     return (
       <Container className="linear-cards">
         <Introduction user={user} />
-        <Devices />
+        {/* <Devices /> */}
       </Container>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 // API
 import { API } from 'aws-amplify'
-import { createVendor, updateHost } from './graphql'
+import { createVendor } from './graphql'
 
 // Redux
 import { connect } from 'react-redux'
