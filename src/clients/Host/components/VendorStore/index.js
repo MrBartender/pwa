@@ -23,7 +23,7 @@ class VendorStore extends Component {
         input: {
           name,
           semanticId,
-          owner: host.user,
+          owner: host.id,
         },
       },
       authMode: 'OPENID_CONNECT',

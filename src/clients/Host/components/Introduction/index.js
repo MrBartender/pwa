@@ -1,14 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Row, Col, Card, CardBody, CardTitle } from 'shards-react'
 
-const Introduction = ({ vendor, user }) => {
+const Introduction = ({ user }) => {
   return (
     <Row>
       <Col>
         <Card>
           <CardBody>
-            <CardTitle>{vendor.name}</CardTitle>
+            <CardTitle>Host Dashboard</CardTitle>
             Welcome to the host dashboard, {user.name.split(' ')[0]}.
           </CardBody>
         </Card>
@@ -17,9 +16,4 @@ const Introduction = ({ vendor, user }) => {
   )
 }
 
-export default connect(
-  state => ({
-    vendor: state.vendor,
-  }),
-  null
-)(Introduction)
+export default Introduction

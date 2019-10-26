@@ -6,6 +6,7 @@
 # a Host, and an unassigned Host can create/buy a Vendor.
 #
 type Host @model @key(fields: ["user"]) {
+  id: ID!
   user: String! # cognitoId of user account; PK
   vendorsOwned: [Vendor!]! @connection(name: "VendorOwner") # list of vendors this user created
 }
