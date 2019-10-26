@@ -45,7 +45,10 @@ class Host extends Component {
             host = await API.graphql({
               query: createHost,
               variables: {
-                input: { user: userId },
+                input: {
+                  // id: userId,
+                  user: userId,
+                },
               },
               authMode: 'OPENID_CONNECT',
             }).data.createHost

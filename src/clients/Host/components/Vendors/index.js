@@ -27,7 +27,7 @@ class Vendors extends Component {
         input: {
           semanticId,
           name,
-          vendorOwnerId: host.id,
+          vendorOwnerId: host.user,
         },
       },
       authMode: 'OPENID_CONNECT',
@@ -61,6 +61,7 @@ class Vendors extends Component {
                     return (
                       <ListGroupItem
                         onClick={() => console.log('clicked', vendor.name)}
+                        key={vendor.id}
                       >
                         {vendor.name} - {vendor.semanticId}
                       </ListGroupItem>
