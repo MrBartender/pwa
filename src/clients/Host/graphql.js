@@ -1,6 +1,6 @@
-export const getHost = `query GetHost($user: String!) {
-  getHost(user: $user) {
-    user
+export const getHost = `query GetHost($id: ID!) {
+  getHost(id: $id) {
+    id
     vendorsOwned {
       items {
         name
@@ -13,7 +13,7 @@ export const getHost = `query GetHost($user: String!) {
 
 export const createHost = `mutation CreateHost($input: CreateHostInput!) {
   createHost(input: $input) {
-    user
+    id
     vendorsOwned {
       items {
         name

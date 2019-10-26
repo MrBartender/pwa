@@ -32,7 +32,7 @@ class Host extends Component {
       // Get host associated with this user
       API.graphql({
         query: getHost,
-        variables: { user: userId },
+        variables: { id: userId },
         authMode: 'OPENID_CONNECT',
       })
         .then(async getResult => {
@@ -43,7 +43,7 @@ class Host extends Component {
             host = (await API.graphql({
               query: createHost,
               variables: {
-                input: { user: userId },
+                input: { id: userId },
               },
               authMode: 'OPENID_CONNECT',
             })).data.createHost

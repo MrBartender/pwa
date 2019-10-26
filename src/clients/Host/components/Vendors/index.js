@@ -49,7 +49,7 @@ class Vendors extends Component {
         input: {
           semanticId,
           name,
-          vendorOwnerId: host.user,
+          vendorOwnerId: host.id,
         },
       },
       authMode: 'OPENID_CONNECT',

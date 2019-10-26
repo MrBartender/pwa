@@ -5,8 +5,8 @@
 # and maintaining devices. A user can be either a consumer or
 # a Host, and an unassigned Host can create/buy a Vendor.
 #
-type Host @model @key(fields: ["user"]) {
-  user: String! # cognitoId of user account; PK
-  vendorsOwned: [Vendor!]! @connection(keyName: "ByOwner", fields: ["user"])
-  # vendorsOwned: [Vendor!]! @connection(name: "VendorOwner") # list of vendors this user created
+type Host @model {
+  id: ID! # always set as cognitoId of user account; PK
+  # vendorsOwned: [Vendor!]! @connection(keyName: "ByOwner", fields: ["user"])
+  vendorsOwned: [Vendor!]! @connection(name: "VendorOwner") # list of vendors this user created
 }
