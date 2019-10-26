@@ -42,7 +42,7 @@ class Host extends Component {
 
           // If no host, create one
           if (!host) {
-            host = await API.graphql({
+            host = (await API.graphql({
               query: createHost,
               variables: {
                 input: {
@@ -51,8 +51,7 @@ class Host extends Component {
                 },
               },
               authMode: 'OPENID_CONNECT',
-            }).data.createHost
-            console.log('createdHost')
+            })).data.createHost
           }
           console.log('host ready:', host)
 

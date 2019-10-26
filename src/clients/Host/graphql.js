@@ -1,6 +1,5 @@
 export const getHost = `query GetHost($user: String!) {
   getHost(user: $user) {
-    id
     user
     vendorsOwned {
       items {
@@ -49,7 +48,6 @@ export const getHost = `query GetHost($user: String!) {
 
 export const createHost = `mutation CreateHost($input: CreateHostInput!) {
   createHost(input: $input) {
-    id
     user
     vendorsOwned {
       items {
