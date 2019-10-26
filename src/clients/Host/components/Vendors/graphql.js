@@ -4,9 +4,7 @@ export const createVendor = `mutation CreateVendor($input: CreateVendorInput!) {
     semanticId
     name
     website
-    owner {
-      user
-    }
+    ownerId
     currentConsumers {
       items {
         user

@@ -3,44 +3,9 @@ export const getHost = `query GetHost($user: String!) {
     user
     vendorsOwned {
       items {
-        id
-        semanticId
         name
-        website
-        currentConsumers {
-          items {
-            user
-          }
-          nextToken
-        }
-        collections {
-          items {
-            id
-            name
-          }
-          nextToken
-        }
-        devices {
-          items {
-            id
-            status
-            name
-            clientId
-            pourCode
-          }
-          nextToken
-        }
-        orders {
-          items {
-            id
-            cognitoIdentityId
-            status
-            price
-          }
-          nextToken
-        }
+        semanticId
       }
-      nextToken
     }
   }
 }
@@ -51,44 +16,9 @@ export const createHost = `mutation CreateHost($input: CreateHostInput!) {
     user
     vendorsOwned {
       items {
-        id
-        semanticId
         name
-        website
-        currentConsumers {
-          items {
-            user
-          }
-          nextToken
-        }
-        collections {
-          items {
-            id
-            name
-          }
-          nextToken
-        }
-        devices {
-          items {
-            id
-            status
-            name
-            clientId
-            pourCode
-          }
-          nextToken
-        }
-        orders {
-          items {
-            id
-            cognitoIdentityId
-            status
-            price
-          }
-          nextToken
-        }
+        semanticId
       }
-      nextToken
     }
   }
 }`

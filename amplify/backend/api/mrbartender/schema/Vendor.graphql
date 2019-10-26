@@ -7,11 +7,12 @@
 # object with many Hosts to manage the devices at events.
 # A Host must create a Vendor account
 #
-type Vendor @model @searchable {
+type Vendor @model @searchable @key(name: "ByOwner", fields: ["ownerId"]) {
   id: ID!
   semanticId: String! # 4 character code (shorthand to find Vendor)
   name: String! # Name of company or establishment
-  owner: Host! @connection(name: "VendorOwner") # Host account that created this Vendor
+  ownerId: ID! # Id of the owner Host
+  # owner: Host @connection(name: "VendorOwner", fields: ["ownerId"]) # Host account that created this Vendor
   website: AWSURL # Company URL
   profilePic: ProfilePic # collection of images for branding
   currentConsumers: [Consumer!] @connection(name: "VendorConsumers") # Consumers in the establishment rn

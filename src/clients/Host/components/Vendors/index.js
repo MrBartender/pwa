@@ -18,6 +18,28 @@ import { API } from 'aws-amplify'
 import { createVendor } from './graphql'
 
 class Vendors extends Component {
+  // componentDidMount() {
+  //   const { host } = this.props
+
+  //   API.graphql({
+  //     query: getVendors,
+  //     variables: {
+  //       input: {
+  //         semanticId,
+  //         name,
+  //         vendorOwnerId: host.user,
+  //       },
+  //     },
+  //     authMode: 'OPENID_CONNECT',
+  //   })
+  //     .then(createResult => {
+  //       setVendor(createResult.data.createVendor)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error creating vendor:', error)
+  //     })
+  // }
+
   createVendor(name, semanticId) {
     const { host, setVendor } = this.props
 
