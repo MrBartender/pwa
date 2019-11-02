@@ -1,8 +1,7 @@
 #####
 # Ingredient class (e.g. gin, vodka, OJ)
 #
-type Ingredient @model @searchable
-{
+type Ingredient @model {
   id: ID!
   name: String!
   alcoholic: Boolean!

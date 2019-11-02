@@ -7,7 +7,7 @@
 # object with many Hosts to manage the devices at events.
 # A Host must create a Vendor account
 #
-type Vendor @model @searchable {
+type Vendor @model {
   id: ID!
   semanticId: String! # 4 character code (shorthand to find Vendor)
   name: String! # Name of company or establishment

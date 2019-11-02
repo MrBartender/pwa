@@ -1,8 +1,7 @@
 #####
 # Recipe of a drink
 #
-type Recipe @model @searchable
-{
+type Recipe @model {
   id: ID!
   name: String!
   price: Int!

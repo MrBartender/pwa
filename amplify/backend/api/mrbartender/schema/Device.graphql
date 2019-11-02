@@ -1,7 +1,7 @@
 #####
 # Automated pouring machine registered with a vendor
 #
-type Device @model @searchable {
+type Device @model {
   id: ID!
   status: DeviceStatus!
   name: String!

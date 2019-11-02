@@ -1,8 +1,8 @@
 #####
 # Consumer profile data
 #
-type Consumer @model @key(fields: ["user"]) {
-  user: String!
+type Consumer @model {
+  id: ID! # set as cognitoId of logged in user owner
   # favoriteCollections: [CollectionFavorites!]! @connection(name: "CollectionsFavorited")
   # favoriteDrinks: [Recipe!]! @connection
   currentVendor: Vendor @connection(name: "VendorConsumers")
