@@ -1,18 +1,26 @@
 {
 	"auth": {
-		"mrbartenderc9e7fb26": {
+		"pwa7e0336af": {
 			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
 		}
 	},
 	"api": {
-		"mrbartender": {
+		"pwa": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
-				"securityType": "AMAZON_COGNITO_USER_POOLS"
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authpwa7e0336af"
+						}
+					}
+				}
 			}
 		}
-	},
-	"hosting": {}
+	}
 }

@@ -1,9 +1,10 @@
 {
-    "AppSyncApiName": "mrbartender",
+    "AppSyncApiName": "pwa",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
-            "authmrbartenderc9e7fb26",
+            "authpwa7e0336af",
             "Outputs.UserPoolId"
         ]
     }

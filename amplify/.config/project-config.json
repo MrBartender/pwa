@@ -1,5 +1,5 @@
 {
-    "projectName": "mrbartender",
+    "projectName": "pwa",
     "version": "2.0",
     "frontend": "javascript",
     "javascript": {
@@ -7,8 +7,8 @@
         "config": {
             "SourceDir": "src",
             "DistributionDir": "build",
-            "BuildCommand": "npm run-script build",
-            "StartCommand": "npm run-script start"
+            "BuildCommand": "yarn run build",
+            "StartCommand": "yarn start"
         }
     },
     "providers": [
