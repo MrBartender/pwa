@@ -1,26 +1,27 @@
 {
-	"auth": {
-		"pwa7e0336af": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	},
-	"api": {
-		"pwa": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authpwa7e0336af"
-						}
-					}
-				}
-			}
-		}
-	}
+  "auth": {
+    "pwa7e0336af": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "api": {
+    "pwa": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "googleClientId": "167223859798-utaf2kgse8chgj6qldv85ddml63net4k.apps.googleusercontent.com",
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authpwa7e0336af"
+            }
+          }
+        }
+      }
+    }
+  }
 }
